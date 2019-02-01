@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
 import 'main.dart';
+import 'eventDetails.dart';
+
 
 class GroupView extends StatelessWidget {
 //  GroupView(this.groupId,this.members,this.events);
@@ -50,7 +52,7 @@ class GroupView extends StatelessWidget {
     events.add(new Event("Flutter hackathon6", "A very cool hackathon ", "date", null, EventType.Finished));
     events.add(new Event("Flutter hackathon7", "A very cool hackathon ", "date", null, EventType.Finished));
     events.add(new Event("Flutter hackathon8", "A very cool hackathon ", "date", null, EventType.Finished));
-
+    
     organizeEvents();
   }
 
@@ -165,7 +167,7 @@ class GroupView extends StatelessWidget {
   void _onTapItem(BuildContext context, Event e) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SecondRoute(event: e)),
+      MaterialPageRoute(builder: (context) => eventDetails(event: e)),
     );
   }
 }
