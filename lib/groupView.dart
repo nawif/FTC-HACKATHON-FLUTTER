@@ -56,44 +56,39 @@ class GroupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'مجموعة' + groupId.toString(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('مجموعة' + groupId.toString()),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-        ),
-        body: Directionality(
-          textDirection: TextDirection.rtl,
-          child: ListView.builder(
-              itemCount: 4 + members.length + events.length,
-              padding: const EdgeInsets.all(15.0),
-              itemBuilder: (context, position) {
-                if (position == 0) return getColTitle("أعضاء الفريق");
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('مجموعة' + groupId.toString()),
+      ),
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: ListView.builder(
+            itemCount: 4 + members.length + events.length,
+            padding: const EdgeInsets.all(15.0),
+            itemBuilder: (context, position) {
+              if (position == 0) return getColTitle("أعضاء الفريق", context);
 
-                if (position <= members.length) return getColMember(position);
-                if (position == members.length + 1) return getColTitle("الفعاليات الحالية");
-                if (position <= members.length + currentEvents.length + 1) {
-                  return getColEvent(currentEvents[position - members.length - 2],context);
-                }
-                if (members.length + currentEvents.length + 2 == position) {
-                  return getColTitle("الفعاليات القادمة");
-                }
-                if (position < members.length + currentEvents.length + 3 + comingEvents.length) {
-                  return getColEvent(comingEvents[position - members.length - 3 - currentEvents.length], context);
-                }
-                if (position == members.length + currentEvents.length + 3 + comingEvents.length) {
-                  return getColTitle("الفعاليات السابقة");
-                }
-                return getColEvent(prevEvents[position - (members.length + currentEvents.length + 4 + comingEvents.length)],context);
-              }),
-        ),
+              if (position <= members.length) return getColMember(position, context);
+              if (position == members.length + 1) return getColTitle("الفعاليات الحالية", context);
+              if (position <= members.length + currentEvents.length + 1) {
+                return getColEvent(currentEvents[position - members.length - 2], context);
+              }
+              if (members.length + currentEvents.length + 2 == position) {
+                return getColTitle("الفعاليات القادمة", context);
+              }
+              if (position < members.length + currentEvents.length + 3 + comingEvents.length) {
+                return getColEvent(comingEvents[position - members.length - 3 - currentEvents.length], context);
+              }
+              if (position == members.length + currentEvents.length + 3 + comingEvents.length) {
+                return getColTitle("الفعاليات السابقة", context);
+              }
+              return getColEvent(prevEvents[position - (members.length + currentEvents.length + 4 + comingEvents.length)], context);
+            }),
       ),
     );
   }
 
-  Widget getColMember(int position) {
+  Widget getColMember(int position, BuildContext context) {
     return new Container(
 //      height: 50,
         child: new Column(
@@ -101,10 +96,7 @@ class GroupView extends StatelessWidget {
         ListTile(
           title: Text(
             '${members[position - 1].name}',
-            style: TextStyle(
-              fontSize: 22.0,
-              color: Colors.deepOrangeAccent,
-            ),
+            style: Theme.of(context).textTheme.body1,
           ),
 //          subtitle: Text(
 //            '${members[position - 1].body}',
@@ -125,16 +117,13 @@ class GroupView extends StatelessWidget {
     ));
   }
 
-  Column getColTitle(String title) {
+  Column getColTitle(String title, BuildContext context) {
     return new Column(children: <Widget>[
       Center(
         child: ListTile(
           title: Text(
             title,
-            style: TextStyle(
-              fontSize: 22.0,
-              color: Colors.deepOrangeAccent,
-            ),
+            style: Theme.of(context).textTheme.title,
           ),
         ),
       ),
@@ -148,17 +137,11 @@ class GroupView extends StatelessWidget {
         ListTile(
           title: Text(
             e.name,
-            style: TextStyle(
-              fontSize: 22.0,
-              color: Colors.deepOrangeAccent,
-            ),
+            style: Theme.of(context).textTheme.subhead,
           ),
           subtitle: Text(
             e.date + "\n" + e.body,
-            style: new TextStyle(
-              fontSize: 18.0,
-              fontStyle: FontStyle.italic,
-            ),
+            style: Theme.of(context).textTheme.body1,
           ),
           onTap: () => _onTapItem(context, e),
         ),
@@ -181,9 +164,8 @@ class GroupView extends StatelessWidget {
 
   void _onTapItem(BuildContext context, Event e) {
     Navigator.push(
-        context,
+      context,
       MaterialPageRoute(builder: (context) => SecondRoute(event: e)),
     );
-
   }
 }
