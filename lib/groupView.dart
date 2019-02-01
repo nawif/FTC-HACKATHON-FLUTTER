@@ -182,7 +182,7 @@ class GroupView extends StatelessWidget {
   void _onTapItem(BuildContext context, Event e) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => myApp(e)),
+      MaterialPageRoute(builder: (context) => eventDetails(event: e)),
     );
   }
 }
