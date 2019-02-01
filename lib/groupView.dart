@@ -34,8 +34,9 @@ class _GroupViewState extends State<GroupView> {
         'المشاريع المنجزة:110',
       ));
 
-      events.add(new Event("Flutter hackathon", "A very cool hackathon ","date",null,EventType.ComingSoon));
-      events.add(new Event("Flutter hackathon", "A very cool hackathon ","date",null,EventType.ComingSoon));
+      events.add(new Event("Flutter hackathon1", "A very cool hackathon ","date",null,EventType.ComingSoon));
+      events.add(new Event("Flutter hackathon2", "A very cool hackathon ","date",null,EventType.ComingSoon));
+      events.add(new Event("Flutter hackathon3", "A very cool hackathon ","date",null,EventType.ComingSoon));
 
     });
   }
@@ -52,7 +53,7 @@ class _GroupViewState extends State<GroupView> {
         ),
         body: Center(
           child: ListView.builder(
-              itemCount: 2 + members.length,
+              itemCount: 2 + members.length + events.length,
               padding: const EdgeInsets.all(15.0),
               itemBuilder: (context, position) {
                 if (position == 0)
@@ -118,38 +119,35 @@ class _GroupViewState extends State<GroupView> {
                     )
                   ]);
                 if (position > members.length + 1)
-                {
                   return new Column(
                     children: <Widget>[
                       Divider(height: 5.0),
                       ListTile(
                         title: Text(
-                          '${events[position -members.length].title}',
+                          '${events[position - members.length - 2].name}',
                           style: TextStyle(
                             fontSize: 22.0,
                             color: Colors.deepOrangeAccent,
                           ),
                         ),
                         subtitle: Text(
-                          '${events[position -members.length].body}',
+                          '${events[position - members.length - 2].body}',
                           style: new TextStyle(
                             fontSize: 18.0,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-
-                        onTap: () => _onTapItem(context, members[position - 1]),
                       ),
                     ],
                   );
-                }
+
               }),
         ),
       ),
     );
   }
 
-  void _onTapItem(BuildContext context, Post post) {
+  void _onTapItem(BuildContext context, Group post) {
     Scaffold.of(context).showSnackBar(
         new SnackBar(content: new Text(post.body + ' - ' + post.title)));
   }
