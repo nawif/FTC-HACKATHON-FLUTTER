@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'post.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class eventDetails extends StatelessWidget {
-  Event event;
+class myApp extends StatefulWidget{
+  final Event e;
+  myApp(this.e);
+  @override
+  eventDetails createState() => new eventDetails(event: e);
 
-  eventDetails({Key key, @required this.event}) : super(key: key);
+}
+
+
+class eventDetails extends State<myApp> {
+  Event event;
+  static final List<String> checkList = ["الحصول على موافقة المشروع", "التواصل مع الضيف", "بدء فعالية في تطبيق النادي", "طلب تصميم الرول أب", "طلب نشر المشروع على التويتر", "طلب توفير تغذية وتصاريح الدخول", "توزيع الرول أب", "التواجد قبل بدء المشروع", "تنظيم وإدارة المشروع", "تسليم التقرير", "رصد أعمال المنظمين", "اغلاق الفعالية"];
+  List<bool> values = new List();
+
+  eventDetails({Key key, @required this.event});
 
   @override
   Widget build(BuildContext context) {
+    values = new List();
+    for(int i = 0;i<checkList.length;i++)
+      values.add(false);
     return Scaffold(
         appBar: AppBar(
           title: Text(event.name),
@@ -95,18 +109,19 @@ class eventDetails extends StatelessWidget {
                     new ListView.builder(
                         shrinkWrap: true,
                         physics: ClampingScrollPhysics(),
-                        itemCount: 9,
+                        itemCount: checkList.length,
                         itemBuilder: (context, position) {
                           return new Card(
                             child: Row(
                               children: <Widget>[
                                 Checkbox(
-                                  value: false,
-                                ),
-                                Text(
-                                  "Hello",
-                                ),
+                                  value: values[position],
+                                  onChanged: (bool newValue) {
 
+                                  },                                ),
+                                Text(
+                                  checkList[position],
+                                ),
                               ],
                             ),
                           );
