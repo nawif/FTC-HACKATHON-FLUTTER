@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
-import 'event.dart';
 
 void main() {
   runApp(GroupView());
@@ -12,38 +11,32 @@ class GroupView extends StatefulWidget {
 }
 
 class _GroupViewState extends State<GroupView> {
-  final List<Post> members = new List();
+  final List<Group> members = new List();
   final List<Event> events = new List();
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      members.add(new Post(
-        1,
+      members.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/3',
         'نواف القعيد',
         'المشاريع المنجزة:12',
       ));
-      members.add(new Post(
-        1,
+      members.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/4',
         'عبادة العرابي',
         'المشاريع المنجزة:11',
       ));
-      members.add(new Post(
-        2,
+      members.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/5',
         'نفر ثاني',
         'المشاريع المنجزة:110',
       ));
 
-      events.add(new Event(0, "Flutter hackathon", "A very cool hackathon ",
-          DateTime(1999), EventType.ComingSoon));
-      events.add(new Event(1, "Flutter hackathon2", "2A very cool hackathon ",
-          DateTime(1998), EventType.inProgress));
-      events.add(new Event(2, "Flutter hackathon3", "3A very cool hackathon ",
-          DateTime(1997), EventType.Finished));
+      events.add(new Event("Flutter hackathon", "A very cool hackathon ","date",null,EventType.ComingSoon));
+      events.add(new Event("Flutter hackathon", "A very cool hackathon ","date",null,EventType.ComingSoon));
+
     });
   }
 
