@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
 import 'main.dart';
+import 'eventDetails.dart';
+
 
 class GroupView extends StatelessWidget {
 //  GroupView(this.groupId,this.members,this.events);
@@ -26,6 +28,20 @@ class GroupView extends StatelessWidget {
   List<Event> comingEvents = new List();
 
 
+<<<<<<< HEAD
+=======
+    events.add(new Event("Flutter hackathon1", "A very cool hackathon ", "date", null, EventType.ComingSoon));
+    events.add(new Event("Flutter hackathon2", "A very cool hackathon ", "date", null, EventType.inProgress));
+    events.add(new Event("Flutter hackathon3", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon4", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon5", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon6", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon7", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon8", "A very cool hackathon ", "date", null, EventType.Finished));
+    
+    organizeEvents();
+  }
+>>>>>>> 4e5a472ff4e20a0642205640d4111995f46e9b3f
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +154,7 @@ class GroupView extends StatelessWidget {
   void _onTapItem(BuildContext context, Event e) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SecondRoute(event: e)),
+      MaterialPageRoute(builder: (context) => eventDetails(event: e)),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
 import 'groupView.dart';
-
 void main() {
   runApp(ListViewApp());
 //  GroupView g = GroupView(1, [new Member('https://www.ftcksu.com/v1/users/getUserImage/3', "nawaf"), new Member('https://www.ftcksu.com/v1/users/getUserImage/4', 'عبادة عرابي')], []);
@@ -111,39 +110,4 @@ class _ListViewState extends State<ListViewApp> {
   }
 }
 
-class SecondRoute extends StatelessWidget {
-  Event event;
 
-  SecondRoute({Key key, @required this.event}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(event.name),
-      ),
-      body: Align(
-          alignment: Alignment.topRight,
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'تاريخ الأنتهاء: ${event.date}',
-            style: Theme.of(context).textTheme.title,
-          ),
-          Text(
-            'حالة المشروع: ${event.returnEventStatus()}',
-            style: Theme.of(context).textTheme.title,
-          ),
-          Text(event.date),
-          Expanded(
-            child: FittedBox(
-              fit: BoxFit.contain, // otherwise the logo will be tiny
-              child: const FlutterLogo(),
-            ),
-          ),
-        ],
-      )),
-    );
-  }
-}
