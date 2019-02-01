@@ -11,49 +11,49 @@ class ListViewApp extends StatefulWidget {
 }
 
 class _ListViewState extends State<ListViewApp> {
-  final List<Post> items = new List();
+  final List<Group> items = new List();
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      items.add(new Post(
+      items.add(new Group(
         1,
         'https://www.ftcksu.com/v1/users/getUserImage/3',
         'نواف القعيد',
         'المشاريع المنجزة:12',
       ));
-      items.add(new Post(
+      items.add(new Group(
         1,
         'https://www.ftcksu.com/v1/users/getUserImage/4',
         'عبادة العرابي',
         'المشاريع المنجزة:11',
       ));
-      items.add(new Post(
+      items.add(new Group(
         2,
         'https://www.ftcksu.com/v1/users/getUserImage/5',
         'سعود القحطاني',
         'المشاريع المنجزة:110',
       ));
-      items.add(new Post(
+      items.add(new Group(
         2,
         'https://www.ftcksu.com/v1/users/getUserImage/6',
         'خالد العجلان',
         'المشاريع المنجزة:12',
       ));
-      items.add(new Post(
+      items.add(new Group(
         3,
         'https://www.ftcksu.com/v1/users/getUserImage/7',
         'ناصر العواجي',
         'المشاريع المنجزة:12',
       ));
-      items.add(new Post(
+      items.add(new Group(
         3,
         'https://www.ftcksu.com/v1/users/getUserImage/8',
         'ماجد الخثعمي',
         'المشاريع المنجزة:12',
       ));
-      items.add(new Post(
+      items.add(new Group(
         3,
         'https://www.ftcksu.com/v1/users/getUserImage/9',
         'عبدالله الحجي',
@@ -121,9 +121,39 @@ class _ListViewState extends State<ListViewApp> {
     );
   }
 
-  void _onTapItem(BuildContext context, Post post) {
-    Scaffold
-        .of(context)
-        .showSnackBar(new SnackBar(content: new Text(post.body + ' - ' + post.title)));
+  void _onTapItem(BuildContext context, Group post) {
+    // Scaffold
+    //     .of(context)
+    //     .showSnackBar(new SnackBar(content: new Text(post.body + ' - ' + post.title)));
+                Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SecondRoute()),
+            );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  // Group 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: Column(
+  children: <Widget>[
+    Text('Deliver features faster'),
+    Text('Craft beautiful UIs'),
+    Expanded(
+      child: FittedBox(
+        fit: BoxFit.contain, // otherwise the logo will be tiny
+        child: const FlutterLogo(),
+      ),
+    ),
+  ],
+)
+      ),
+    );
   }
 }
