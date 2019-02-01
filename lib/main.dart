@@ -21,36 +21,43 @@ class _ListViewState extends State<ListViewApp> {
         'https://www.ftcksu.com/v1/users/getUserImage/3',
         'نواف القعيد',
         'المشاريع المنجزة:12',
+        [new Events("name", "date", [0])]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/4',
         'عبادة العرابي',
         'المشاريع المنجزة:11',
+        [new Events("name", "date", [0])]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/5',
         'سعود القحطاني',
         'المشاريع المنجزة:110',
+        [new Events("name", "date", [0])]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/6',
         'خالد العجلان',
         'المشاريع المنجزة:12',
+        [new Events("name", "date", [0])]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/7',
         'ناصر العواجي',
         'المشاريع المنجزة:12',
+        [new Events("name", "date", [0])]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/8',
         'ماجد الخثعمي',
         'المشاريع المنجزة:12',
+        [new Events("name", "date", [0])]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/9',
         'عبدالله الحجي',
         'المشاريع المنجزة:12',
+        [new Events("name", "date", [0])]
       ));
     });
   }
@@ -120,24 +127,26 @@ class _ListViewState extends State<ListViewApp> {
     //     .showSnackBar(new SnackBar(content: new Text(post.body + ' - ' + post.title)));
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SecondRoute()),
+              MaterialPageRoute(builder: (context) => SecondRoute(event: post.events[0])),
             );
   }
 }
 
 class SecondRoute extends StatelessWidget {
+  Events event;
   // Group 
+
+  SecondRoute({Key key, @required this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text(event.name),
       ),
       body: Center(
         child: Column(
   children: <Widget>[
-    Text('Deliver features faster'),
-    Text('Craft beautiful UIs'),
+    Text(event.date),
     Expanded(
       child: FittedBox(
         fit: BoxFit.contain, // otherwise the logo will be tiny

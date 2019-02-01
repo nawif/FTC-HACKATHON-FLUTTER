@@ -4,7 +4,7 @@ class Group {
   final String body;
   List<Events> events;
 
-  Group(this.url, this.title, this.body);
+  Group(this.url, this.title, this.body, this.events);
 }
 
 
