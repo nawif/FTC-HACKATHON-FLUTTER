@@ -32,31 +32,31 @@ class _ListViewState extends State<ListViewApp> {
       items.add(new Post(
         2,
         'https://www.ftcksu.com/v1/users/getUserImage/5',
-        'نفر ثاني',
+        'سعود القحطاني',
         'المشاريع المنجزة:110',
       ));
       items.add(new Post(
         2,
         'https://www.ftcksu.com/v1/users/getUserImage/6',
-        'نواف القعيد',
+        'خالد العجلان',
         'المشاريع المنجزة:12',
       ));
       items.add(new Post(
         3,
         'https://www.ftcksu.com/v1/users/getUserImage/7',
-        'نواف القعيد',
+        'ناصر العواجي',
         'المشاريع المنجزة:12',
       ));
       items.add(new Post(
         3,
         'https://www.ftcksu.com/v1/users/getUserImage/8',
-        'نواف القعيد',
+        'ماجد الخثعمي',
         'المشاريع المنجزة:12',
       ));
       items.add(new Post(
         3,
         'https://www.ftcksu.com/v1/users/getUserImage/9',
-        'نواف القعيد',
+        'عبدالله الحجي',
         'المشاريع المنجزة:12',
       ));
     });
@@ -65,10 +65,10 @@ class _ListViewState extends State<ListViewApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'JSA ListView Demo',
+      title: 'قائمة قادة المجموعات',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('ListView Demo'),
+          title: Text('قائمة قادة المجموعات'),
           centerTitle: true,
           backgroundColor: Colors.blue,
         ),
@@ -98,12 +98,8 @@ class _ListViewState extends State<ListViewApp> {
                       leading: Column(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundColor: Colors.black.withOpacity(0),
+                          backgroundImage: NetworkImage('${items[position].url}'),
                             radius: 35.0,
-                            child: Image.network(
-                            '${items[position].url}',
-        )
-        ,
                           ),
                           // IconButton(
                           //   icon: const Icon(Icons.remove_circle_outline),
