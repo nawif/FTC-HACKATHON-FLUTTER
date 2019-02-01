@@ -48,9 +48,9 @@ class eventDetails extends StatelessWidget {
                           radius: 90.0,
                           lineWidth: 10.0,
                           animation: true,
-                          percent: 0.7,
+                          percent: event.percentage,
                           center: new Text(
-                            "70.0%",
+                            (event.percentage*100).toString()+"%",
                             style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                           ),
                           footer: new Text(

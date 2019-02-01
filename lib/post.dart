@@ -24,11 +24,11 @@ class Group {
           "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي -لمدة ثلاث ايام من ٣١ يناير الى نهاية يوم السبت وبعد هذا يتوج الفريق الفائز وينعطى جائزة",
           "2019/1/1",
           [1, 1, 1],
-          EventType.inProgress),
-      Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress)
+          EventType.inProgress, 0.3),
+      Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress,0.88)
     ], [
       new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),
-      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id + 1}', "عبادة", 62)
+      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id++}', "عبادة", 62)
     ]);
   }
 }
@@ -45,6 +45,7 @@ class Event {
   final String name;
   final String body;
   final String date;
+  final double percentage;
   List<int> checkedItems;
   EventType eventType;
 
@@ -64,7 +65,7 @@ class Event {
     }
   }
 
-  Event(this.name, this.body, this.date, this.checkedItems, this.eventType);
+  Event(this.name, this.body, this.date, this.checkedItems, this.eventType, this.percentage);
 }
 
 enum EventType { ComingSoon, Finished, inProgress }
