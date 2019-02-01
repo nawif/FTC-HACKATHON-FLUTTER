@@ -18,7 +18,7 @@ class Group {
 
 
   static Group getDumbData(int id){
-    return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [Event("هاكاثون فلتر", "body", "2019/1/1", [1,1,1], EventType.inProgress), Event("هاكاثون فلتر", "body", "2019/1/1", [1,1,1], EventType.inProgress)], [new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)]);
+    return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [Event("هاكاثون فلتر", "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي", "2019/1/1", [1,1,1], EventType.inProgress), Event("هاكاثون فلتر", "body", "2019/1/1", [1,1,1], EventType.inProgress)], [new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)]);
   }
 }
 

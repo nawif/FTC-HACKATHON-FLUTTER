@@ -48,7 +48,7 @@ class eventDetails extends StatelessWidget {
                     new TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
                   ),
                   circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Colors.purple,
+                  progressColor: Colors.deepOrangeAccent,
                 ),
               ),
             ],
