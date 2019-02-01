@@ -3,7 +3,6 @@ import 'post.dart';
 import 'main.dart';
 import 'eventDetails.dart';
 
-
 class GroupView extends StatelessWidget {
 //  GroupView(this.groupId,this.members,this.events);
   GroupView(int id, List<Member> members, List<Event> events) {
@@ -26,35 +25,6 @@ class GroupView extends StatelessWidget {
   List<Event> currentEvents = new List();
   final List<Event> prevEvents = new List();
   List<Event> comingEvents = new List();
-
-  void initState() {
-//      members.add(new Group(
-//        'https://www.ftcksu.com/v1/users/getUserImage/3',
-//        'نواف القعيد',
-//        'المشاريع المنجزة:12',null
-//      ));
-//      members.add(new Group(
-//        'https://www.ftcksu.com/v1/users/getUserImage/4',
-//        'عبادة العرابي',
-//        'المشاريع المنجزة:11',null
-//      ));
-//      members.add(new Group(
-//        'https://www.ftcksu.com/v1/users/getUserImage/5',
-//        'نفر ثاني',
-//        'المشاريع المنجزة:110',null
-//      ));
-
-    events.add(new Event("Flutter hackathon1", "A very cool hackathon ", "date", null, EventType.ComingSoon));
-    events.add(new Event("Flutter hackathon2", "A very cool hackathon ", "date", null, EventType.inProgress));
-    events.add(new Event("Flutter hackathon3", "A very cool hackathon ", "date", null, EventType.Finished));
-    events.add(new Event("Flutter hackathon4", "A very cool hackathon ", "date", null, EventType.Finished));
-    events.add(new Event("Flutter hackathon5", "A very cool hackathon ", "date", null, EventType.Finished));
-    events.add(new Event("Flutter hackathon6", "A very cool hackathon ", "date", null, EventType.Finished));
-    events.add(new Event("Flutter hackathon7", "A very cool hackathon ", "date", null, EventType.Finished));
-    events.add(new Event("Flutter hackathon8", "A very cool hackathon ", "date", null, EventType.Finished));
-
-    organizeEvents();
-  }
 
   @override
   Widget build(BuildContext context) {

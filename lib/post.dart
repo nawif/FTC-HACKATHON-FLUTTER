@@ -6,19 +6,30 @@ class Group {
   List<Event> events;
   List<Member> members;
 
-  Group(this.id,this.leaderID, this.title, this.body, this.events,this.members);
-    Member getLeader(){
-      for (var i = 0; i < members.length; i++) {
-          if(members[i].id == leaderID ){
-            return members[i];
-          }
+  Group(this.id, this.leaderID, this.title, this.body, this.events, this.members);
+
+  Member getLeader() {
+    for (var i = 0; i < members.length; i++) {
+      if (members[i].id == leaderID) {
+        return members[i];
       }
-      return members[0];
     }
+    return members[0];
+  }
 
-
-  static Group getDumbData(int id){
-    return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [Event("هاكاثون فلتر", "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي", "2019/1/1", [1,1,1], EventType.inProgress), Event("هاكاثون فلتر", "body", "2019/1/1", [1,1,1], EventType.inProgress)], [new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)]);
+  static Group getDumbData(int id) {
+    return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [
+      Event(
+          "هاكاثون فلتر",
+          "body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body ",
+          "2019/1/1",
+          [1, 1, 1],
+          EventType.inProgress),
+      Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress)
+    ], [
+      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),
+      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id + 1}', "عبادة", 62)
+    ]);
   }
 }
 
@@ -26,9 +37,8 @@ class Member {
   final String url;
   final String name;
   final int id;
-  Member(this.url,this.name,this.id);
 
-
+  Member(this.url, this.name, this.id);
 }
 
 class Event {
@@ -38,8 +48,7 @@ class Event {
   List<int> checkedItems;
   EventType eventType;
 
-  String returnEventStatus(){
-    
+  String returnEventStatus() {
     switch (eventType) {
       case EventType.ComingSoon:
         return "قريباً";
@@ -55,8 +64,7 @@ class Event {
     }
   }
 
-  Event(this.name,this.body,this.date,this.checkedItems,this.eventType);
+  Event(this.name, this.body, this.date, this.checkedItems, this.eventType);
 }
-enum EventType{
-  ComingSoon, Finished,inProgress
-}
+
+enum EventType { ComingSoon, Finished, inProgress }
