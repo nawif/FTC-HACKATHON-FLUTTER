@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'post.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class eventDetails extends StatelessWidget {
+
+class eventDetails extends StatefulWidget{
+  Event event;
+  eventDetails({Key key, @required this.event}) : super();
+  eventDetailsState createState() => new eventDetailsState(event: this.event);
+
+}
+
+class eventDetailsState extends State<eventDetails> {
   Event event;
 
-  eventDetails({Key key, @required this.event}) : super(key: key);
+  eventDetailsState({Key key, @required this.event});
  
   @override
   Widget build(BuildContext context) {
