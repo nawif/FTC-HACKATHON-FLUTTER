@@ -21,7 +21,7 @@ class Group {
     return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [
       Event(
           "هاكاثون فلتر",
-          "body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body body ",
+          "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي -لمدة ثلاث ايام من ٣١ يناير الى نهاية يوم السبت وبعد هذا يتوج الفريق الفائز وينعطى جائزة",
           "2019/1/1",
           [1, 1, 1],
           EventType.inProgress),
