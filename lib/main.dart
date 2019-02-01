@@ -33,6 +33,32 @@ class _ListViewState extends State<ListViewApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'قائمة قادة المجموعات',
+			theme: ThemeData(
+				// Define the default Brightness and Colors
+//        brightness: Brightness.dark,
+//        primaryColor: Colors.lightBlue[800],
+//        accentColor: Colors.cyan[600],
+
+				// Define the default Font Family
+				fontFamily: 'Cairo',
+
+				// Define the default TextTheme. Use this to specify the default
+				// text styling for headlines, titles, bodies of text, and more.
+				textTheme: TextTheme(
+						headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+						title: TextStyle(
+							fontSize: 22.0,
+							fontWeight: FontWeight.bold,
+						),
+						body1: TextStyle(
+							fontSize: 18.0,
+							fontStyle: FontStyle.italic,
+						),
+						subhead: TextStyle(
+							fontSize: 20.0,
+						)
+				),
+			),
       home: Scaffold(
         appBar: AppBar(
           title: Text('قائمة قادة المجموعات'),
@@ -50,17 +76,11 @@ class _ListViewState extends State<ListViewApp> {
                     ListTile(
                       title: Text(
                         '${items[position].title}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.deepOrangeAccent,
-                        ),
+                        style: Theme.of(context).textTheme.title,
                       ),
                       subtitle: Text(
                         '${items[position].body}',
-                        style: new TextStyle(
-                          fontSize: 18.0,
-                          fontStyle: FontStyle.italic,
-                        ),
+                        style: Theme.of(context).textTheme.body1,
                       ),
                       leading: Column(
                         children: <Widget>[
@@ -109,19 +129,11 @@ class SecondRoute extends StatelessWidget {
         children: <Widget>[
           Text(
             'تاريخ الأنتهاء: ${event.date}',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontFamily: 'Cairo',
-              color: Colors.deepOrangeAccent,
-            ),
+            style: Theme.of(context).textTheme.title,
           ),
           Text(
             'حالة المشروع: ${event.returnEventStatus()}',
-            style: TextStyle(
-              fontFamily: 'Cairo',
-              fontSize: 22.0,
-              color: Colors.deepOrangeAccent,
-            ),
+            style: Theme.of(context).textTheme.title,
           ),
           Text(event.date),
           Expanded(
