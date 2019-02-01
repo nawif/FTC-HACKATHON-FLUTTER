@@ -15,6 +15,22 @@ class Event {
   List<int> checkedItems;
   EventType eventType;
 
+  String returnEventStatus(){
+    
+    switch (eventType) {
+      case EventType.ComingSoon:
+        return "قريباً";
+        break;
+      case EventType.Finished:
+        return "منتهي";
+        break;
+      case EventType.inProgress:
+        return "قيد العمل";
+        break;
+      default:
+        return "wtf";
+    }
+  }
 
   Event(this.name,this.body,this.date,this.checkedItems,this.eventType);
 }

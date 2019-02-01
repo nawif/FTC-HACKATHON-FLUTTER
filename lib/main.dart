@@ -3,8 +3,8 @@ import 'post.dart';
 import 'groupView.dart';
 
 void main() {
-//  runApp(ListViewApp());
-  runApp(GroupView());
+ runApp(ListViewApp());
+  // runApp(GroupView());
 }
 
 class ListViewApp extends StatefulWidget {
@@ -23,43 +23,43 @@ class _ListViewState extends State<ListViewApp> {
         'https://www.ftcksu.com/v1/users/getUserImage/3',
         'نواف القعيد',
         'المشاريع المنجزة:12',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/4',
         'عبادة العرابي',
         'المشاريع المنجزة:11',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/5',
         'سعود القحطاني',
         'المشاريع المنجزة:110',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/6',
         'خالد العجلان',
         'المشاريع المنجزة:12',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/7',
         'ناصر العواجي',
         'المشاريع المنجزة:12',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/8',
         'ماجد الخثعمي',
         'المشاريع المنجزة:12',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
       items.add(new Group(
         'https://www.ftcksu.com/v1/users/getUserImage/9',
         'عبدالله الحجي',
         'المشاريع المنجزة:12',
-        [new Events("name", "date", [0])]
+        [new Event("فريق التطوير","رصد اعمال الفريق","2019-01-11",[0],EventType.Finished)]
       ));
     });
   }
@@ -135,7 +135,7 @@ class _ListViewState extends State<ListViewApp> {
 }
 
 class SecondRoute extends StatelessWidget {
-  Events event;
+  Event event;
   // Group 
 
   SecondRoute({Key key, @required this.event}) : super(key: key);
@@ -147,7 +147,23 @@ class SecondRoute extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, 
   children: <Widget>[
+    Text(
+      'تاريخ الأنتهاء: ${event.date}',
+        style: TextStyle(
+         fontSize: 22.0,
+          color: Colors.deepOrangeAccent,
+        ),
+      ),
+      Text(
+      'حالة المشروع: ${event.returnEventStatus()}',
+        style: TextStyle(
+         fontSize: 22.0,
+          color: Colors.deepOrangeAccent,
+        ),
+      ),
+    
     Text(event.date),
     Expanded(
       child: FittedBox(
