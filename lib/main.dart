@@ -18,43 +18,36 @@ class _ListViewState extends State<ListViewApp> {
     super.initState();
     setState(() {
       items.add(new Group(
-        1,
         'https://www.ftcksu.com/v1/users/getUserImage/3',
         'نواف القعيد',
         'المشاريع المنجزة:12',
       ));
       items.add(new Group(
-        1,
         'https://www.ftcksu.com/v1/users/getUserImage/4',
         'عبادة العرابي',
         'المشاريع المنجزة:11',
       ));
       items.add(new Group(
-        2,
         'https://www.ftcksu.com/v1/users/getUserImage/5',
         'سعود القحطاني',
         'المشاريع المنجزة:110',
       ));
       items.add(new Group(
-        2,
         'https://www.ftcksu.com/v1/users/getUserImage/6',
         'خالد العجلان',
         'المشاريع المنجزة:12',
       ));
       items.add(new Group(
-        3,
         'https://www.ftcksu.com/v1/users/getUserImage/7',
         'ناصر العواجي',
         'المشاريع المنجزة:12',
       ));
       items.add(new Group(
-        3,
         'https://www.ftcksu.com/v1/users/getUserImage/8',
         'ماجد الخثعمي',
         'المشاريع المنجزة:12',
       ));
       items.add(new Group(
-        3,
         'https://www.ftcksu.com/v1/users/getUserImage/9',
         'عبدالله الحجي',
         'المشاريع المنجزة:12',

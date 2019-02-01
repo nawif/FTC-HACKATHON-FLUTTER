@@ -1,18 +1,22 @@
 class Group {
-  final int userId;
   final String url;
   final String title;
   final String body;
   List<Events> events;
 
-  Group(this.userId, this.url, this.title, this.body);
+  Group(this.url, this.title, this.body);
 }
 
 
 class Events {
   final String name;
   final String date;
-  final List<int> checkedItems;
+  List<int> checkedItems;
+  EventType eventType;
+
 
   Events(this.name,this.date,this.checkedItems);
+}
+enum EventType{
+  ComingSoon, Finished,inProgress
 }
