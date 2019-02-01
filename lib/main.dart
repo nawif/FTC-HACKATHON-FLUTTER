@@ -136,12 +136,14 @@ class SecondRoute extends StatelessWidget {
             'تاريخ الأنتهاء: ${event.date}',
             style: TextStyle(
               fontSize: 22.0,
+              fontFamily:'Cairo',
               color: Colors.deepOrangeAccent,
             ),
           ),
           Text(
             'حالة المشروع: ${event.returnEventStatus()}',
             style: TextStyle(
+              fontFamily:'Cairo',
               fontSize: 22.0,
               color: Colors.deepOrangeAccent,
             ),

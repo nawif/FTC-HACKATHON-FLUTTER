@@ -30,6 +30,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/Cairo/Cairo-Black.ttf
+        - asset: assets/Cairo/Cairo-Bold.ttf
+        - asset: assets/Cairo/Cairo-Light.ttf
+        - asset: assets/Cairo/Cairo-Regular.ttf
+        - asset: assets/Cairo/Cairo-Black.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
