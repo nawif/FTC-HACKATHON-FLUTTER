@@ -23,7 +23,7 @@ class _ListViewState extends State<ListViewApp> {
     setState(() {
       items.add(new Group(1, 'https://www.ftcksu.com/v1/users/getUserImage/3', 'نواف القعيد', 'المشاريع المنجزة:12', [
         new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
+      ], [new Member( 'https://www.ftcksu.com/v1/users/getUserImage/3', 'نواف القعيد',),new Member( 'https://www.ftcksu.com/v1/users/getUserImage/4', 'نواف القعيد',),new Member( 'https://www.ftcksu.com/v1/users/getUserImage/6', 'نواف القعيد',),new Member( 'https://www.ftcksu.com/v1/users/getUserImage/33', 'نواف القعيد',)]));
       items.add(new Group(2, 'https://www.ftcksu.com/v1/users/getUserImage/4', 'عبادة عرابي', 'المشاريع المنجزة:11', [
         new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
       ], []));
@@ -125,14 +125,14 @@ class SecondRoute extends StatelessWidget {
             'تاريخ الأنتهاء: ${event.date}',
             style: TextStyle(
               fontSize: 22.0,
-              fontFamily:'Cairo',
+              fontFamily: 'Cairo',
               color: Colors.deepOrangeAccent,
             ),
           ),
           Text(
             'حالة المشروع: ${event.returnEventStatus()}',
             style: TextStyle(
-              fontFamily:'Cairo',
+              fontFamily: 'Cairo',
               fontSize: 22.0,
               color: Colors.deepOrangeAccent,
             ),

@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
-
-
+import 'main.dart';
 
 class GroupView extends StatelessWidget {
-
 //  GroupView(this.groupId,this.members,this.events);
-  GroupView(int id ,List<Member> members,List<Event> events)
-  {
+  GroupView(int id, List<Member> members, List<Event> events) {
     this.groupId = id;
     this.members = members;
     this.events = events;
     organizeEvents();
   }
-  GroupView.fromGroup(Group g)
-  {
+
+  GroupView.fromGroup(Group g) {
     this.groupId = g.id;
     this.members = g.members;
     this.events = g.events;
     organizeEvents();
-
   }
-
 
   int groupId = 1;
   List<Member> members = new List();
@@ -47,18 +42,16 @@ class GroupView extends StatelessWidget {
 //        'المشاريع المنجزة:110',null
 //      ));
 
-      events.add(new Event("Flutter hackathon1", "A very cool hackathon ", "date", null, EventType.ComingSoon));
-      events.add(new Event("Flutter hackathon2", "A very cool hackathon ", "date", null, EventType.inProgress));
-      events.add(new Event("Flutter hackathon3", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon4", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon5", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon6", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon7", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon8", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon1", "A very cool hackathon ", "date", null, EventType.ComingSoon));
+    events.add(new Event("Flutter hackathon2", "A very cool hackathon ", "date", null, EventType.inProgress));
+    events.add(new Event("Flutter hackathon3", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon4", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon5", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon6", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon7", "A very cool hackathon ", "date", null, EventType.Finished));
+    events.add(new Event("Flutter hackathon8", "A very cool hackathon ", "date", null, EventType.Finished));
 
-
-      organizeEvents();
-
+    organizeEvents();
   }
 
   @override
@@ -82,18 +75,18 @@ class GroupView extends StatelessWidget {
                 if (position <= members.length) return getColMember(position);
                 if (position == members.length + 1) return getColTitle("الفعاليات الحالية");
                 if (position <= members.length + currentEvents.length + 1) {
-                  return getColEvent(currentEvents[position - members.length - 2]);
+                  return getColEvent(currentEvents[position - members.length - 2],context);
                 }
                 if (members.length + currentEvents.length + 2 == position) {
                   return getColTitle("الفعاليات القادمة");
                 }
                 if (position < members.length + currentEvents.length + 3 + comingEvents.length) {
-                  return getColEvent(comingEvents[position - members.length - 3 - currentEvents.length]);
+                  return getColEvent(comingEvents[position - members.length - 3 - currentEvents.length], context);
                 }
-                if (position == members.length + currentEvents.length + 3 + comingEvents.length ) {
+                if (position == members.length + currentEvents.length + 3 + comingEvents.length) {
                   return getColTitle("الفعاليات السابقة");
                 }
-                return getColEvent(prevEvents[position - (members.length + currentEvents.length + 4 + comingEvents.length)]);
+                return getColEvent(prevEvents[position - (members.length + currentEvents.length + 4 + comingEvents.length)],context);
               }),
         ),
       ),
@@ -149,7 +142,7 @@ class GroupView extends StatelessWidget {
     ]);
   }
 
-  Column getColEvent(Event e) {
+  Column getColEvent(Event e, BuildContext context) {
     return new Column(
       children: <Widget>[
         ListTile(
@@ -166,9 +159,10 @@ class GroupView extends StatelessWidget {
               fontSize: 18.0,
               fontStyle: FontStyle.italic,
             ),
-          ),onTap: _onTapItem(),
-        ),      Divider(height: 0),
-
+          ),
+          onTap: () => _onTapItem(context, e),
+        ),
+        Divider(height: 0),
       ],
     );
   }
@@ -185,9 +179,11 @@ class GroupView extends StatelessWidget {
     }
   }
 
-  void _onTapItem(BuildContext context, Group post) {
-    Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(post.body + ' - ' + post.title)));
+  void _onTapItem(BuildContext context, Event e) {
+    Navigator.push(
+        context,
+      MaterialPageRoute(builder: (context) => SecondRoute(event: e)),
+    );
+
   }
-
-
 }
