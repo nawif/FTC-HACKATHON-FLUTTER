@@ -34,9 +34,9 @@ class _ListViewState extends State<ListViewApp> {
       title: 'قائمة قادة المجموعات',
 			theme: ThemeData(
 				// Define the default Brightness and Colors
-//        brightness: Brightness.dark,
-//        primaryColor: Colors.lightBlue[800],
-//        accentColor: Colors.cyan[600],
+        brightness: Brightness.dark,
+        primaryColor: Colors.lightBlue[800],
+        accentColor: Colors.cyan[600],
 
 				// Define the default Font Family
 				fontFamily: 'Cairo',
@@ -65,43 +65,45 @@ class _ListViewState extends State<ListViewApp> {
         appBar: AppBar(
           title: Text('قائمة قادة المجموعات'),
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.deepPurpleAccent,
         ),
         body: Center(
           child: ListView.builder(
               itemCount: items.length,
               padding: const EdgeInsets.all(15.0),
               itemBuilder: (context, position) {
-                return Column(
-                  children: <Widget>[
-                    Divider(height: 5.0),
-                    ListTile(
-                      title: Text(
-                        '${items[position].title}',
-                        style: Theme.of(context).textTheme.title,
-                      ),
-                      subtitle: Text(
-                        '${items[position].body}',
-                        style: Theme.of(context).textTheme.body1,
-                      ),
-                      leading: Column(
-                        children: <Widget>[
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                '${items[position].getLeader().url}'),
-                            radius: 35.0,
-                          ),
-                        ],
-                      ),
-                      onTap: () => _onTapItem(context, items[position]),
-                    ),
-                  ],
-                );
+                return getGroupCard(items[position], context);
               }),
         ),
       ),
     );
   }
+
+  Column getGroupCard(Group g, context){
+    return new Column(
+        children: <Widget>[
+          Center(
+            child: Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    leading:CircleAvatar(
+                      backgroundImage: NetworkImage('${g.getLeader().url}'),
+                      radius: 35.0,
+                    ),
+                    title: Text(g.title),
+                    subtitle: Text(g.body),
+                      onTap: () => _onTapItem(context, g),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      );
+    }
+
 
   void _onTapItem(BuildContext context, Group post) {
     Navigator.push(
