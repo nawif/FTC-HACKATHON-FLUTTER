@@ -1,19 +1,32 @@
 class Group {
   final int id;
-  final String leaderUrl;
+  final int leaderID;
   final String title;
   final String body;
   List<Event> events;
   List<Member> members;
 
-  Group(this.id,this.leaderUrl, this.title, this.body, this.events,this.members);
+  Group(this.id,this.leaderID, this.title, this.body, this.events,this.members);
+    Member getLeader(){
+      for (var i = 0; i < members.length; i++) {
+          if(members[i].id == leaderID ){
+            return members[i];
+          }
+      }
+      return members[0];
+    }
+
+
+  static Group getDumbData(int id){
+    return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [Event("هاكاثون فلتر", "body", "2019/1/1", [1,1,1], EventType.inProgress), Event("هاكاثون فلتر", "body", "2019/1/1", [1,1,1], EventType.inProgress)], [new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)]);
+  }
 }
 
 class Member {
   final String url;
   final String name;
-
-  Member(this.url,this.name);
+  final int id;
+  Member(this.url,this.name,this.id);
 
 
 }

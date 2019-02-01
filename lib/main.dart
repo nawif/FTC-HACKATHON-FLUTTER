@@ -21,28 +21,12 @@ class _ListViewState extends State<ListViewApp> {
   void initState() {
     super.initState();
     setState(() {
-      items.add(new Group(1, 'https://www.ftcksu.com/v1/users/getUserImage/3', 'نواف القعيد', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
-      items.add(new Group(2, 'https://www.ftcksu.com/v1/users/getUserImage/4', 'عبادة عرابي', 'المشاريع المنجزة:11', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
-      items.add(new Group(3, 'https://www.ftcksu.com/v1/users/getUserImage/5', 'سعود القحطاني', 'المشاريع المنجزة:110', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
-      items.add(new Group(4, 'https://www.ftcksu.com/v1/users/getUserImage/6', 'خالد العجلان', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
-      items.add(new Group(5, 'https://www.ftcksu.com/v1/users/getUserImage/7', 'ناصر العواجي', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
-      items.add(new Group(6, 'https://www.ftcksu.com/v1/users/getUserImage/8', 'ماجد الخثعمي', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
-      items.add(new Group(7, 'https://www.ftcksu.com/v1/users/getUserImage/9', 'عبدالله الحجي', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
-      ], []));
+      items.add(Group.getDumbData(1));
+      items.add(Group.getDumbData(2));
+      items.add(Group.getDumbData(3));
+      items.add(Group.getDumbData(4));
     });
+
   }
 
   @override
@@ -81,7 +65,8 @@ class _ListViewState extends State<ListViewApp> {
                       leading: Column(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage: NetworkImage('${items[position].leaderUrl}'),
+                            backgroundImage: NetworkImage(
+                                '${items[position].getLeader().url}'),
                             radius: 35.0,
                           ),
                         ],
@@ -118,30 +103,25 @@ class SecondRoute extends StatelessWidget {
         title: Text(event.name),
       ),
       body: Align(
-        alignment:Alignment.topRight,
+          alignment: Alignment.topRight,
           child: Column(
-            children:<Widget>[
+            children: <Widget>[
               Text(
                 'تاريخ الأنتهاء: ${event.date}',
                 style: TextStyle(
                   fontSize: 22.0,
-                  fontFamily:'Cairo',
+                  fontFamily: 'Cairo',
                   color: Colors.deepOrangeAccent,
                 ),
               ),
-
-
               Text(
                 'حالة المشروع: ${event.returnEventStatus()}',
                 style: TextStyle(
-                  fontFamily:'Cairo',
-
+                  fontFamily: 'Cairo',
                   fontSize: 22.0,
                   color: Colors.deepOrangeAccent,
                 ),
               ),
-
-
               Text(event.date),
               Expanded(
                 child: FittedBox(
@@ -150,7 +130,7 @@ class SecondRoute extends StatelessWidget {
                 ),
               ),
             ],
-      )),
+          )),
     );
   }
 }

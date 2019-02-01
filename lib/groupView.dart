@@ -46,15 +46,7 @@ class GroupView extends StatelessWidget {
 //        'نفر ثاني',
 //        'المشاريع المنجزة:110',null
 //      ));
-
-      events.add(new Event("Flutter hackathon1", "A very cool hackathon ", "date", null, EventType.ComingSoon));
-      events.add(new Event("Flutter hackathon2", "A very cool hackathon ", "date", null, EventType.inProgress));
-      events.add(new Event("Flutter hackathon3", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon4", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon5", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon6", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon7", "A very cool hackathon ", "date", null, EventType.Finished));
-      events.add(new Event("Flutter hackathon8", "A very cool hackathon ", "date", null, EventType.Finished));
+  
 
 
       organizeEvents();
