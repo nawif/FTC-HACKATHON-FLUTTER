@@ -128,34 +128,39 @@ class SecondRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text(event.name),
       ),
-      body: Center(
+      body: Align(
+        alignment:Alignment.topRight,
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'تاريخ الأنتهاء: ${event.date}',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontFamily:'Cairo',
-              color: Colors.deepOrangeAccent,
-            ),
-          ),
-          Text(
-            'حالة المشروع: ${event.returnEventStatus()}',
-            style: TextStyle(
-              fontFamily:'Cairo',
-              fontSize: 22.0,
-              color: Colors.deepOrangeAccent,
-            ),
-          ),
-          Text(event.date),
-          Expanded(
-            child: FittedBox(
-              fit: BoxFit.contain, // otherwise the logo will be tiny
-              child: const FlutterLogo(),
-            ),
-          ),
-        ],
+            children:<Widget>[
+              Text(
+                'تاريخ الأنتهاء: ${event.date}',
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontFamily:'Cairo',
+                  color: Colors.deepOrangeAccent,
+                ),
+              ),
+
+
+              Text(
+                'حالة المشروع: ${event.returnEventStatus()}',
+                style: TextStyle(
+                  fontFamily:'Cairo',
+
+                  fontSize: 22.0,
+                  color: Colors.deepOrangeAccent,
+                ),
+              ),
+
+
+              Text(event.date),
+              Expanded(
+                child: FittedBox(
+                  fit: BoxFit.contain, // otherwise the logo will be tiny
+                  child: const FlutterLogo(),
+                ),
+              ),
+            ],
       )),
     );
   }
