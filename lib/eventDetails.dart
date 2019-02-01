@@ -67,9 +67,12 @@ class eventDetails extends StatelessWidget {
               ),
             ),
             new Divider(height: 5,),
-            Text(
-              event.body,
-              style: Theme.of(context).textTheme.body2,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 15, 15, 15), 
+              child: Text(
+                event.body,
+                style: Theme.of(context).textTheme.body2,
+              ),
             )
 
           ],

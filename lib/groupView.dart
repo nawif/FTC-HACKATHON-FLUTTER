@@ -113,7 +113,7 @@ class GroupView extends StatelessWidget {
           ),
           subtitle: Text(
             e.date + "\n" + e.body,
-            style: Theme.of(context).textTheme.body1,
+            style: Theme.of(context).textTheme.body2,
           ),
           onTap: () => _onTapItem(context, e),
         ),
