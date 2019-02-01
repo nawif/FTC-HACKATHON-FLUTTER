@@ -52,7 +52,10 @@ class _ListViewState extends State<ListViewApp> {
 						body1: TextStyle(
 							fontSize: 18.0,
 							fontStyle: FontStyle.italic,
-						),
+						),body2: TextStyle(
+					fontSize: 15.0,
+					fontStyle: FontStyle.italic,
+				),
 						subhead: TextStyle(
 							fontSize: 20.0,
 						)
