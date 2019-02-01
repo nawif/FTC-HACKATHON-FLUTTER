@@ -28,7 +28,7 @@ class Group {
       Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress,0.88)
     ], [
       new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),
-      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id++}', "عبادة", 62)
+      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)
     ]);
   }
 }
