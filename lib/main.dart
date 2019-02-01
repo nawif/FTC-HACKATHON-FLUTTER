@@ -3,8 +3,8 @@ import 'post.dart';
 import 'groupView.dart';
 
 void main() {
-//  runApp(ListViewApp());
-  runApp(GroupView());
+  runApp(ListViewApp());
+  // runApp(GroupView());
 }
 
 class ListViewApp extends StatefulWidget {
@@ -19,41 +19,41 @@ class _ListViewState extends State<ListViewApp> {
   void initState() {
     super.initState();
     setState(() {
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/3',
-        'نواف القعيد',
-        'المشاريع المنجزة:12',
-      ));
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/4',
-        'عبادة العرابي',
-        'المشاريع المنجزة:11',
-      ));
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/5',
-        'سعود القحطاني',
-        'المشاريع المنجزة:110',
-      ));
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/6',
-        'خالد العجلان',
-        'المشاريع المنجزة:12',
-      ));
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/7',
-        'ناصر العواجي',
-        'المشاريع المنجزة:12',
-      ));
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/8',
-        'ماجد الخثعمي',
-        'المشاريع المنجزة:12',
-      ));
-      items.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/9',
-        'عبدالله الحجي',
-        'المشاريع المنجزة:12',
-      ));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/3',
+          'نواف القعيد', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/4',
+          'عبادة العرابي', 'المشاريع المنجزة:11', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/5',
+          'سعود القحطاني', 'المشاريع المنجزة:110', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/6',
+          'خالد العجلان', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/7',
+          'ناصر العواجي', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/8',
+          'ماجد الخثعمي', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
+      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/9',
+          'عبدالله الحجي', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
+            EventType.Finished)
+      ]));
     });
   }
 
@@ -93,17 +93,10 @@ class _ListViewState extends State<ListViewApp> {
                       leading: Column(
                         children: <Widget>[
                           CircleAvatar(
-                          backgroundImage: NetworkImage('${items[position].url}'),
+                            backgroundImage:
+                                NetworkImage('${items[position].url}'),
                             radius: 35.0,
                           ),
-                          // IconButton(
-                          //   icon: const Icon(Icons.remove_circle_outline),
-                          //   onPressed: () {
-                          //     setState(() {
-                          //       items.removeAt(position);
-                          //     });
-                          //   },
-                          // ),
                         ],
                       ),
                       onTap: () => _onTapItem(context, items[position]),
@@ -117,38 +110,51 @@ class _ListViewState extends State<ListViewApp> {
   }
 
   void _onTapItem(BuildContext context, Group post) {
-    // Scaffold
-    //     .of(context)
-    //     .showSnackBar(new SnackBar(content: new Text(post.body + ' - ' + post.title)));
-                Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SecondRoute()),
-            );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => SecondRoute(event: post.events[0])),
+    );
   }
 }
 
 class SecondRoute extends StatelessWidget {
-  // Group 
+  Event event;
+
+  SecondRoute({Key key, @required this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text(event.name),
       ),
       body: Center(
-        child: Column(
-  children: <Widget>[
-    Text('Deliver features faster'),
-    Text('Craft beautiful UIs'),
-    Expanded(
-      child: FittedBox(
-        fit: BoxFit.contain, // otherwise the logo will be tiny
-        child: const FlutterLogo(),
-      ),
-    ),
-  ],
-)
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'تاريخ الأنتهاء: ${event.date}',
+            style: TextStyle(
+              fontSize: 22.0,
+              color: Colors.deepOrangeAccent,
+            ),
+          ),
+          Text(
+            'حالة المشروع: ${event.returnEventStatus()}',
+            style: TextStyle(
+              fontSize: 22.0,
+              color: Colors.deepOrangeAccent,
+            ),
+          ),
+          Text(event.date),
+          Expanded(
+            child: FittedBox(
+              fit: BoxFit.contain, // otherwise the logo will be tiny
+              child: const FlutterLogo(),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
