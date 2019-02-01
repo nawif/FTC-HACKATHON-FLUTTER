@@ -6,7 +6,7 @@ class eventDetails extends StatelessWidget {
   Event event;
 
   eventDetails({Key key, @required this.event}) : super(key: key);
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
