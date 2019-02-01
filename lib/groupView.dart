@@ -1,42 +1,51 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
 
-void main() {
-  runApp(GroupView());
-}
 
-class GroupView extends StatefulWidget {
-  @override
-  _GroupViewState createState() => new _GroupViewState();
-}
 
-class _GroupViewState extends State<GroupView> {
-  final int groupId = 1;
-  final List<Group> members = new List();
-  final List<Event> events = new List();
+class GroupView extends StatelessWidget {
+
+//  GroupView(this.groupId,this.members,this.events);
+  GroupView(int id ,List<Member> members,List<Event> events)
+  {
+    this.groupId = id;
+    this.members = members;
+    this.events = events;
+    organizeEvents();
+  }
+  GroupView.fromGroup(Group g)
+  {
+    this.groupId = g.id;
+    this.members = g.members;
+    this.events = g.events;
+    organizeEvents();
+
+  }
+
+
+  int groupId = 1;
+  List<Member> members = new List();
+  List<Event> events = new List();
   List<Event> currentEvents = new List();
   List<Event> prevEvents = new List();
   List<Event> comingEvents = new List();
 
-  @override
   void initState() {
-    super.initState();
-    setState(() {
-      members.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/3',
-        'نواف القعيد',
-        'المشاريع المنجزة:12',
-      ));
-      members.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/4',
-        'عبادة العرابي',
-        'المشاريع المنجزة:11',
-      ));
-      members.add(new Group(
-        'https://www.ftcksu.com/v1/users/getUserImage/5',
-        'نفر ثاني',
-        'المشاريع المنجزة:110',
-      ));
+//      members.add(new Group(
+//        'https://www.ftcksu.com/v1/users/getUserImage/3',
+//        'نواف القعيد',
+//        'المشاريع المنجزة:12',null
+//      ));
+//      members.add(new Group(
+//        'https://www.ftcksu.com/v1/users/getUserImage/4',
+//        'عبادة العرابي',
+//        'المشاريع المنجزة:11',null
+//      ));
+//      members.add(new Group(
+//        'https://www.ftcksu.com/v1/users/getUserImage/5',
+//        'نفر ثاني',
+//        'المشاريع المنجزة:110',null
+//      ));
 
       events.add(new Event("Flutter hackathon1", "A very cool hackathon ", "date", null, EventType.ComingSoon));
       events.add(new Event("Flutter hackathon2", "A very cool hackathon ", "date", null, EventType.inProgress));
@@ -49,7 +58,7 @@ class _GroupViewState extends State<GroupView> {
 
 
       organizeEvents();
-    });
+
   }
 
   @override
@@ -98,7 +107,7 @@ class _GroupViewState extends State<GroupView> {
       children: <Widget>[
         ListTile(
           title: Text(
-            '${members[position - 1].title}',
+            '${members[position - 1].name}',
             style: TextStyle(
               fontSize: 22.0,
               color: Colors.deepOrangeAccent,
@@ -117,7 +126,7 @@ class _GroupViewState extends State<GroupView> {
               radius: 25.0,
             ),
           ),
-          onTap: () => _onTapItem(context, members[position - 1]),
+//          onTap: () => _onTapItem(context, members[position - 1]),
         ),
       ],
     ));
@@ -157,7 +166,7 @@ class _GroupViewState extends State<GroupView> {
               fontSize: 18.0,
               fontStyle: FontStyle.italic,
             ),
-          ),
+          ),onTap: _onTapItem(),
         ),      Divider(height: 0),
 
       ],
@@ -179,4 +188,6 @@ class _GroupViewState extends State<GroupView> {
   void _onTapItem(BuildContext context, Group post) {
     Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(post.body + ' - ' + post.title)));
   }
+
+
 }

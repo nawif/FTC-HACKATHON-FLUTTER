@@ -1,12 +1,22 @@
 class Group {
-  final String url;
+  final int id;
+  final String leaderUrl;
   final String title;
   final String body;
   List<Event> events;
+  List<Member> members;
 
-  Group(this.url, this.title, this.body, this.events);
+  Group(this.id,this.leaderUrl, this.title, this.body, this.events,this.members);
 }
 
+class Member {
+  final String url;
+  final String name;
+
+  Member(this.url,this.name);
+
+
+}
 
 class Event {
   final String name;

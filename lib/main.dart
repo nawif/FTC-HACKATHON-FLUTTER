@@ -4,7 +4,9 @@ import 'groupView.dart';
 
 void main() {
   runApp(ListViewApp());
-  // runApp(GroupView());
+//  GroupView g = GroupView(1, [new Member('https://www.ftcksu.com/v1/users/getUserImage/3', "nawaf"), new Member('https://www.ftcksu.com/v1/users/getUserImage/4', 'عبادة عرابي')], []);
+//  g.initState();
+//  runApp(g);
 }
 
 class ListViewApp extends StatefulWidget {
@@ -19,41 +21,27 @@ class _ListViewState extends State<ListViewApp> {
   void initState() {
     super.initState();
     setState(() {
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/3',
-          'نواف القعيد', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/4',
-          'عبادة العرابي', 'المشاريع المنجزة:11', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/5',
-          'سعود القحطاني', 'المشاريع المنجزة:110', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/6',
-          'خالد العجلان', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/7',
-          'ناصر العواجي', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/8',
-          'ماجد الخثعمي', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
-      items.add(new Group('https://www.ftcksu.com/v1/users/getUserImage/9',
-          'عبدالله الحجي', 'المشاريع المنجزة:12', [
-        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0],
-            EventType.Finished)
-      ]));
+      items.add(new Group(1, 'https://www.ftcksu.com/v1/users/getUserImage/3', 'نواف القعيد', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
+      items.add(new Group(2, 'https://www.ftcksu.com/v1/users/getUserImage/4', 'عبادة عرابي', 'المشاريع المنجزة:11', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
+      items.add(new Group(3, 'https://www.ftcksu.com/v1/users/getUserImage/5', 'سعود القحطاني', 'المشاريع المنجزة:110', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
+      items.add(new Group(4, 'https://www.ftcksu.com/v1/users/getUserImage/6', 'خالد العجلان', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
+      items.add(new Group(5, 'https://www.ftcksu.com/v1/users/getUserImage/7', 'ناصر العواجي', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
+      items.add(new Group(6, 'https://www.ftcksu.com/v1/users/getUserImage/8', 'ماجد الخثعمي', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
+      items.add(new Group(7, 'https://www.ftcksu.com/v1/users/getUserImage/9', 'عبدالله الحجي', 'المشاريع المنجزة:12', [
+        new Event("فريق التطوير", "رصد اعمال الفريق", "2019-01-11", [0], EventType.Finished)
+      ], []));
     });
   }
 
@@ -93,8 +81,7 @@ class _ListViewState extends State<ListViewApp> {
                       leading: Column(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage:
-                                NetworkImage('${items[position].url}'),
+                            backgroundImage: NetworkImage('${items[position].leaderUrl}'),
                             radius: 35.0,
                           ),
                         ],
@@ -112,8 +99,9 @@ class _ListViewState extends State<ListViewApp> {
   void _onTapItem(BuildContext context, Group post) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) => SecondRoute(event: post.events[0])),
+//      MaterialPageRoute(builder: (context) => SecondRoute(event: post.events[0])),
+
+      MaterialPageRoute(builder: (context) => GroupView.fromGroup(post)),
     );
   }
 }
@@ -122,6 +110,7 @@ class SecondRoute extends StatelessWidget {
   Event event;
 
   SecondRoute({Key key, @required this.event}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
