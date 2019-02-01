@@ -20,7 +20,7 @@ class eventDetails extends StatelessWidget {
             new IntrinsicHeight(
               child: Container(
                 padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
-                child:new  Row(
+                child: new Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     new Column(children: [
@@ -50,12 +50,14 @@ class eventDetails extends StatelessWidget {
                           animation: true,
                           percent: event.percentage,
                           center: new Text(
-                            (event.percentage*100).toString()+"%",
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                            (event.percentage * 100).toString() + "%",
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20.0),
                           ),
                           footer: new Text(
                             "منجز من الفعالية",
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15.0),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
                           progressColor: Colors.purple,
@@ -66,15 +68,24 @@ class eventDetails extends StatelessWidget {
                 ),
               ),
             ),
-            new Divider(height: 5,),
+            new Divider(
+              height: 5,
+            ),
             Text(
               event.body,
               style: Theme.of(context).textTheme.body2,
-            )
-
+            ),
+            TextFormField(
+                decoration: InputDecoration(labelText: 'علق')),
+            getComments(),
           ],
         ),
       ),
+    );
+  }
+  Column getComments(){
+    return new Column(
+    
     );
   }
 }

@@ -78,6 +78,7 @@ class GroupView extends StatelessWidget {
                           comingEvents.length)],
                   context);
             }),
+
       ),
     );
   }
