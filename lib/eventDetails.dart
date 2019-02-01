@@ -66,6 +66,7 @@ class eventDetails extends State<myApp> {
                               new Expanded(
                                 child: Container(
 //                    color: Colors.amber,
+<<<<<<< HEAD
                                   child: new CircularPercentIndicator(
                                     radius: 90.0,
                                     lineWidth: 10.0,
@@ -85,6 +86,20 @@ class eventDetails extends State<myApp> {
                                 ),
                               ),
                             ],
+=======
+                        child: new CircularPercentIndicator(
+                          radius: 90.0,
+                          lineWidth: 10.0,
+                          animation: true,
+                          percent: event.percentage,
+                          center: new Text(
+                            (event.percentage*100).toString()+"%",
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                          ),
+                          footer: new Text(
+                            "منجز من الفعالية",
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+>>>>>>> 3555f47f4771ef301cc8e96b98d6abc4c1654587
                           ),
                         ),
                       ),

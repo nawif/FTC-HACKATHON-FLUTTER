@@ -35,8 +35,8 @@ class _ListViewState extends State<ListViewApp> {
 			theme: ThemeData(
 				// Define the default Brightness and Colors
         brightness: Brightness.dark,
-        primaryColor: Colors.lightBlue[800],
-        accentColor: Colors.cyan[600],
+        primaryColor: Colors.deepPurple,
+        accentColor: Colors.deepPurpleAccent,
 
 				// Define the default Font Family
 				fontFamily: 'Cairo',
@@ -65,7 +65,7 @@ class _ListViewState extends State<ListViewApp> {
         appBar: AppBar(
           title: Text('قائمة قادة المجموعات'),
           centerTitle: true,
-          backgroundColor: Colors.deepPurpleAccent,
+          // backgroundColor: pri,
         ),
         body: Center(
           child: ListView.builder(

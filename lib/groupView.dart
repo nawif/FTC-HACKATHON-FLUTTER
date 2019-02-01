@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'post.dart';
 import 'main.dart';
 import 'eventDetails.dart';
@@ -35,31 +36,51 @@ class GroupView extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: ListView.builder(
+
             itemCount: 4 + members.length + events.length,
             padding: const EdgeInsets.all(15.0),
             itemBuilder: (context, position) {
               if (position == 0) return getColTitle("أعضاء الفريق", context);
-              
-              if (position <= members.length) return getColMember(position, context);
-              if (position == members.length + 1) return getColTitle("الفعاليات الحالية", context);
+
+              if (position <= members.length)
+                return getColMember(position, context);
+              if (position == members.length + 1)
+                return getColTitle("الفعاليات الحالية", context);
               if (position <= members.length + currentEvents.length + 1) {
-                return getColEvent(currentEvents[position - members.length - 2], context);
+                return getColEvent(
+                    currentEvents[position - members.length - 2], context);
               }
               if (members.length + currentEvents.length + 2 == position) {
                 return getColTitle("الفعاليات القادمة", context);
               }
-              if (position < members.length + currentEvents.length + 3 + comingEvents.length) {
-                return getColEvent(comingEvents[position - members.length - 3 - currentEvents.length], context);
+              if (position <
+                  members.length +
+                      currentEvents.length +
+                      3 +
+                      comingEvents.length) {
+                return getColEvent(
+                    comingEvents[
+                        position - members.length - 3 - currentEvents.length],
+                    context);
               }
-              if (position == members.length + currentEvents.length + 3 + comingEvents.length) {
+              if (position ==
+                  members.length +
+                      currentEvents.length +
+                      3 +
+                      comingEvents.length) {
                 return getColTitle("الفعاليات السابقة", context);
               }
-              return getColEvent( prevEvents[position - (members.length + currentEvents.length + 4 + comingEvents.length)], context);
+              return getColEvent(
+                  prevEvents[position -
+                      (members.length +
+                          currentEvents.length +
+                          4 +
+                          comingEvents.length)],
+                  context);
             }),
       ),
     );
   }
-
 
   Widget getColMember(int position, BuildContext context) {
     return new Column(
@@ -75,7 +96,8 @@ class GroupView extends StatelessWidget {
                   ),
                   leading: Container(
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage('${members[position - 1].url}'),
+                      backgroundImage:
+                          NetworkImage('${members[position - 1].url}'),
                       radius: 25.0,
                     ),
                   ),
@@ -104,22 +126,44 @@ class GroupView extends StatelessWidget {
 
   Column getColEvent(Event e, BuildContext context) {
     return new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-    Center(
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-              ListTile(
-                title: Text(e.name),
-                subtitle: Text(e.body),
-                onTap: () => _onTapItem(context, e),
-              ),
-          ],
+        Center(
+          child: Card(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  title: Text(e.name),
+                  subtitle: getProgressBar(e.percentage),
+                  onTap: () => _onTapItem(context, e),
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
-    )
+        
       ],
+    );
+  }
+
+  getProgressBar(double percentage) {
+    return Padding(
+      padding: EdgeInsets.all(5.0),
+      child: new LinearPercentIndicator(
+        width: 290.0,
+        lineHeight: 20.0,
+        percent: percentage,
+        center: Text(
+          (percentage*100).toString()+"%",
+          style: new TextStyle(fontSize: 12.0),
+        ),
+//        trailing: Icon(Icons),
+        linearStrokeCap: LinearStrokeCap.roundAll,
+        backgroundColor: Colors.grey,
+        progressColor: Colors.blue,
+      ),
     );
   }
 
