@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
+import 'groupView.dart';
 
 void main() {
-  runApp(ListViewApp());
+//  runApp(ListViewApp());
+  runApp(GroupView());
 }
 
 class ListViewApp extends StatefulWidget {
