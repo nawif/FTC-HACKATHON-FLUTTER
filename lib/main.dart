@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'post.dart';
 import 'groupView.dart';
 import 'Economy.dart';
+import 'Jawdah.dart';
 
 void main() {
   runApp(ListViewApp());
@@ -18,7 +19,7 @@ class ListViewApp extends StatefulWidget {
 class _ListViewState extends State<ListViewApp> {
   final List<Group> items = new List();
   int _selectedIndex = 0;
-  List<String> titles = ['قائمة قادة المجموعات', 'الميزانية'];
+  List<String> titles = ['قائمة قادة المجموعات', 'الميزانية','الجودة'];
   List<Widget> bodies = [];
 
   @override
@@ -42,6 +43,7 @@ class _ListViewState extends State<ListViewApp> {
 				new Receipt("اكسير", new Member("https://www.ftcksu.com/v1/users/getUserImage/50", "محمد", 165235), 251,"https://invoicesimple1.wpengine.com/wp-content/uploads/2018/06/Receipt-Template-top.png"),
 			],));
 
+			bodies.add(JawadahView(events: Group.getDumbData(2).events,));
 //      items.add(Group.getDumbData(3));
 //      items.add(Group.getDumbData(4));
     });
@@ -96,9 +98,11 @@ class _ListViewState extends State<ListViewApp> {
         body: bodies[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-            BottomNavigationBarItem(icon: Icon(Icons.business), title: Text('Business')),
-          ],
+            BottomNavigationBarItem(icon: Icon(Icons.group), title: Text('المجموعات')),
+						BottomNavigationBarItem(icon: Icon(Icons.monetization_on), title: Text('الميزانية')),
+						BottomNavigationBarItem(icon: Icon(Icons.monetization_on), title: Text('الجودة')),
+
+					],
           currentIndex: _selectedIndex,
           fixedColor: Colors.deepPurple,
           onTap: _onItemTapped,

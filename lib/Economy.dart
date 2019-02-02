@@ -34,7 +34,7 @@ class EconomyDetailsState extends State<EconomyDetails> {
           child: Center(
             child: Column(
               children: <Widget>[
-                Padding(
+                new Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "الميزانية",
@@ -57,11 +57,11 @@ class EconomyDetailsState extends State<EconomyDetails> {
                     ],
                   ),
                 ),
-                Text(
+                new Text(
                   "الفواتير",
                   style: Theme.of(context).textTheme.title,
                 ),
-                Directionality(
+                new Directionality(
                   textDirection: TextDirection.rtl,
                   child: Column(
                     children: new List.generate(
@@ -86,6 +86,7 @@ class EconomyDetailsState extends State<EconomyDetails> {
                             )),
                   ),
                 ),
+								
               ],
             ),
           ),

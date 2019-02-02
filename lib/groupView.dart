@@ -36,7 +36,7 @@ class GroupView extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: ListView.builder(
-            itemCount: 4 + members.length + events.length,
+            itemCount: 4 + members.length + comingEvents.length+ currentEvents.length+ prevEvents.length,
             padding: const EdgeInsets.all(15.0),
             itemBuilder: (context, position) {
               if (position == 0) return getColTitle("أعضاء الفريق", context);
@@ -141,7 +141,7 @@ class GroupView extends StatelessWidget {
         this.comingEvents.add(e);
       else if (e.eventType == EventType.inProgress)
         this.currentEvents.add(e);
-      else
+      else if (e.eventType == EventType.Finished)
         this.prevEvents.add(e);
     }
   }
