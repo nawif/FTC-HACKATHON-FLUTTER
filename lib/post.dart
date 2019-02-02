@@ -100,4 +100,14 @@ class EventReport {
 
 
 }
+
+class Receipt{
+  final String from;
+  final Member member;
+  final int amount;
+
+  Receipt(this.from, this.member, this.amount);
+}
+
+
 enum EventType { ComingSoon, Finished, inProgress }
