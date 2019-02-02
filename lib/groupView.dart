@@ -36,7 +36,6 @@ class GroupView extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: ListView.builder(
-
             itemCount: 4 + members.length + events.length,
             padding: const EdgeInsets.all(15.0),
             itemBuilder: (context, position) {
@@ -84,44 +83,32 @@ class GroupView extends StatelessWidget {
   }
 
   Widget getColMember(int position, BuildContext context) {
-    return new Column(
-      children: <Widget>[
-        Center(
-          child: Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                ListTile(
-                  title: Text(
-                    '${members[position - 1].name}',
-                  ),
-                  leading: Container(
-                    child: CircleAvatar(
-                      backgroundImage:
-                          NetworkImage('${members[position - 1].url}'),
-                      radius: 25.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+    return Card(
+      child: ListTile(
+        trailing: Icon(Icons.person),
+        title: Text(
+          '${members[position - 1].name}',
+        ),
+        leading: Container(
+          child: CircleAvatar(
+            backgroundImage:
+                NetworkImage('${members[position - 1].url}'),
+            radius: 25.0,
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 
   Column getColTitle(String title, BuildContext context) {
     return new Column(children: <Widget>[
-      Center(
-        child: ListTile(
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.title,
-          ),
+      ListTile(
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.title,
         ),
       ),
-      Divider(height: 0),
+      Divider(height: 10),
     ]);
   }
 
@@ -129,19 +116,17 @@ class GroupView extends StatelessWidget {
     return new Column(
                     mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Center(
-          child: Card(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                ListTile(
-                  title: Text(e.name),
-                  subtitle: getProgressBar(e.percentage,context),
-                  onTap: () => _onTapItem(context, e),
-                ),
-              ],
-            ),
+        Card(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                title: Text(e.name),
+                subtitle: getProgressBar(e.percentage,context),
+                onTap: () => _onTapItem(context, e),
+              ),
+            ],
           ),
         ),
 
@@ -150,10 +135,8 @@ class GroupView extends StatelessWidget {
   }
 
   getProgressBar(double percentage,BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(5.0),
+    return Center(
       child: Container(
-        alignment: Alignment(0.0, 0.0),
 //        color: Colors.red,
         child: new LinearPercentIndicator(
           width: MediaQuery.of(context).size.width * 0.7,
@@ -164,7 +147,7 @@ class GroupView extends StatelessWidget {
             (percentage*100).toString()+"%",
             style: new TextStyle(fontSize: 12.0),
           ),
-//        trailing: Icon(Icons),
+        leading: Icon(Icons.event),
           linearStrokeCap: LinearStrokeCap.roundAll,
           backgroundColor: Colors.grey,
           progressColor: Colors.blue,

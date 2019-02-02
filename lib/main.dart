@@ -30,6 +30,12 @@ class _ListViewState extends State<ListViewApp> {
 
   @override
   Widget build(BuildContext context) {
+    int _selectedIndex = 0;
+    void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
     return MaterialApp(
       title: 'قائمة قادة المجموعات',
 			theme: ThemeData(
@@ -75,8 +81,19 @@ class _ListViewState extends State<ListViewApp> {
                 return getGroupCard(items[position], context);
               }),
         ),
-      ),
+    bottomNavigationBar: BottomNavigationBar(
+    items: <BottomNavigationBarItem>[
+    BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+    BottomNavigationBarItem(icon: Icon(Icons.business), title: Text('Business')),
+    BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('School')),
+    ],
+      currentIndex: _selectedIndex,
+      fixedColor: Colors.deepPurple,
+      onTap: _onItemTapped,
+    ),
+    ),
     );
+
   }
 
   Column getGroupCard(Group g, context){
@@ -88,10 +105,12 @@ class _ListViewState extends State<ListViewApp> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
+
                     leading:CircleAvatar(
                       backgroundImage: NetworkImage('${g.getLeader().url}'),
                       radius: 35.0,
                     ),
+                    trailing: Icon(Icons.group),
                     title: Text(g.title),
                     subtitle: Text(g.body),
                       onTap: () => _onTapItem(context, g),
