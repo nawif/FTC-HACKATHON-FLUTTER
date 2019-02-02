@@ -12,25 +12,17 @@ class eventDetails extends StatefulWidget {
 
 class eventDetailsState extends State<eventDetails> {
   Event event;
-
   eventDetailsState({Key key, @required this.event});
 
   @override
   Widget build(BuildContext context) {
     return
-//      ListView.builder
-// (
-//      itemCount: 1,
-//      itemBuilder: (context, position)
-//      {
-//        return
         new Scaffold(
       appBar: AppBar(
         title: Text(event.name),
       ),
-      body: SingleChildScrollView(
-        child: Directionality(
-          textDirection: TextDirection.rtl,
+      body: Directionality(
+        textDirection: TextDirection.rtl,
           child: Column(
             children: <Widget>[
               new IntrinsicHeight(
@@ -41,16 +33,12 @@ class eventDetailsState extends State<eventDetails> {
                     children: [
                       new Column(children: [
                         Container(
-//                  height: 120.0,
-//                    color: Colors.yellow,
                           child: Text(
                             'تاريخ الأنتهاء: ${event.date}',
                             style: Theme.of(context).textTheme.body1,
                           ),
                         ),
                         Container(
-//                  height: 100.0,
-//                    color: Colors.cyan,
                           child: Text(
                             'حالة المشروع: ${event.returnEventStatus()}',
                             style: Theme.of(context).textTheme.body1,
@@ -59,7 +47,6 @@ class eventDetailsState extends State<eventDetails> {
                       ]),
                       new Expanded(
                         child: Container(
-//                    color: Colors.amber,
                           child: new CircularPercentIndicator(
                             radius: 90.0,
                             lineWidth: 10.0,
@@ -85,22 +72,51 @@ class eventDetailsState extends State<eventDetails> {
               new Divider(
                 height: 5,
               ),
-              Text(
-                event.body,
-                style: Theme.of(context).textTheme.body2,
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  event.body,
+                  style: Theme.of(context).textTheme.body2,
+                ),
               ),
-              TextFormField(decoration: InputDecoration(labelText: 'علق')),
-              getComments(),
+//              getRegularWidgets(),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(decoration: InputDecoration(labelText: 'علق')),
+              ),
             ],
           ),
-        ),
       ),
     );
 //      },
 //    );
-  }
 
-  Column getComments() {
-    return new Column();
+  }
+  Map<String, bool> valuesCars = {
+    'Car11': false,
+    'Car12': false,
+    'Car13': false,
+    'Car14': false,
+    'Car15': false,
+    'Car16': false,
+    'Car17': false,
+    'Car18': false,
+    'Car19': false,
+    'Car20': false,
+    'Car21': false,
+  };
+  List<Widget> getRegularWidgets() {
+    List<Widget> widgets = valuesCars.keys.map((key) {
+      return new CheckboxListTile(
+          title: new Text(key),
+          value: valuesCars[key],
+          onChanged: (bool value) {
+            setState(() {
+              valuesCars[key] = !valuesCars[key];
+            });
+          });
+    }).toList();
+
+    return widgets;
   }
 }
