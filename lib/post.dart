@@ -105,8 +105,8 @@ class Receipt{
   final String from;
   final Member member;
   final int amount;
-
-  Receipt(this.from, this.member, this.amount);
+  final String picURL;
+  Receipt(this.from, this.member, this.amount, this.picURL);
 }
 
 

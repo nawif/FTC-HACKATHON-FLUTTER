@@ -38,8 +38,8 @@ class _ListViewState extends State<ListViewApp> {
 			));
 
 			bodies.add(EconomyDetails(amountDocumented: 5213,amountUndocumented: 3015,amountUsed: 5213+3015,receipts: [
-				new Receipt("Ya Mal Al sham", new Member("https://www.ftcksu.com/v1/users/getUserImage/58", "عبادة", 165235), 1520),
-				new Receipt("اكسير", new Member("https://www.ftcksu.com/v1/users/getUserImage/50", "محمد", 165235), 251),
+				new Receipt("Ya Mal Al sham", new Member("https://www.ftcksu.com/v1/users/getUserImage/58", "عبادة", 165235), 1520,"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/170px-ReceiptSwiss.jpg"),
+				new Receipt("اكسير", new Member("https://www.ftcksu.com/v1/users/getUserImage/50", "محمد", 165235), 251,"https://invoicesimple1.wpengine.com/wp-content/uploads/2018/06/Receipt-Template-top.png"),
 			],));
 
 //      items.add(Group.getDumbData(3));
