@@ -139,33 +139,38 @@ class GroupView extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   title: Text(e.name),
-                  subtitle: getProgressBar(e.percentage),
+                  subtitle: getProgressBar(e.percentage,context),
                   onTap: () => _onTapItem(context, e),
                 ),
               ],
             ),
           ),
         ),
-        
+
       ],
     );
   }
 
-  getProgressBar(double percentage) {
+  getProgressBar(double percentage,BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(5.0),
-      child: new LinearPercentIndicator(
-        width: 290.0,
-        lineHeight: 20.0,
-        percent: percentage,
-        center: Text(
-          (percentage*100).toString()+"%",
-          style: new TextStyle(fontSize: 12.0),
-        ),
+      child: Container(
+        alignment: Alignment(0.0, 0.0),
+//        color: Colors.red,
+        child: new LinearPercentIndicator(
+          width: MediaQuery.of(context).size.width * 0.7,
+          padding: EdgeInsets.fromLTRB(0, 0, MediaQuery.of(context).size.width * 0.1, 0),
+          lineHeight: 20.0,
+          percent: percentage,
+          center: Text(
+            (percentage*100).toString()+"%",
+            style: new TextStyle(fontSize: 12.0),
+          ),
 //        trailing: Icon(Icons),
-        linearStrokeCap: LinearStrokeCap.roundAll,
-        backgroundColor: Colors.grey,
-        progressColor: Colors.blue,
+          linearStrokeCap: LinearStrokeCap.roundAll,
+          backgroundColor: Colors.grey,
+          progressColor: Colors.blue,
+        ),
       ),
     );
   }
