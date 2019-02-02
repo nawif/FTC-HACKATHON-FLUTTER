@@ -18,19 +18,12 @@ class eventDetailsState extends State<eventDetails> {
   @override
   Widget build(BuildContext context) {
     return
-//      ListView.builder
-// (
-//      itemCount: 1,
-//      itemBuilder: (context, position)
-//      {
-//        return
         new Scaffold(
       appBar: AppBar(
         title: Text(event.name),
       ),
-      body: SingleChildScrollView(
-        child: Directionality(
-          textDirection: TextDirection.rtl,
+      body: Directionality(
+        textDirection: TextDirection.rtl,
           child: Column(
             children: <Widget>[
               new IntrinsicHeight(
@@ -41,16 +34,12 @@ class eventDetailsState extends State<eventDetails> {
                     children: [
                       new Column(children: [
                         Container(
-//                  height: 120.0,
-//                    color: Colors.yellow,
                           child: Text(
                             'تاريخ الأنتهاء: ${event.date}',
                             style: Theme.of(context).textTheme.body1,
                           ),
                         ),
                         Container(
-//                  height: 100.0,
-//                    color: Colors.cyan,
                           child: Text(
                             'حالة المشروع: ${event.returnEventStatus()}',
                             style: Theme.of(context).textTheme.body1,
@@ -59,7 +48,6 @@ class eventDetailsState extends State<eventDetails> {
                       ]),
                       new Expanded(
                         child: Container(
-//                    color: Colors.amber,
                           child: new CircularPercentIndicator(
                             radius: 90.0,
                             lineWidth: 10.0,
@@ -93,7 +81,6 @@ class eventDetailsState extends State<eventDetails> {
               getComments(),
             ],
           ),
-        ),
       ),
     );
 //      },

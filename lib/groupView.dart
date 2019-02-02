@@ -33,54 +33,52 @@ class GroupView extends StatelessWidget {
       appBar: AppBar(
         title: Text('مجموعة ' + groupId.toString()),
       ),
-      body: SingleChildScrollView(
-        child: Directionality(
-          textDirection: TextDirection.rtl,
-          child: ListView.builder(
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: ListView.builder(
 
-              itemCount: 4 + members.length + events.length,
-              padding: const EdgeInsets.all(15.0),
-              itemBuilder: (context, position) {
-                if (position == 0) return getColTitle("أعضاء الفريق", context);
+            itemCount: 4 + members.length + events.length,
+            padding: const EdgeInsets.all(15.0),
+            itemBuilder: (context, position) {
+              if (position == 0) return getColTitle("أعضاء الفريق", context);
 
-                if (position <= members.length)
-                  return getColMember(position, context);
-                if (position == members.length + 1)
-                  return getColTitle("الفعاليات الحالية", context);
-                if (position <= members.length + currentEvents.length + 1) {
-                  return getColEvent(
-                      currentEvents[position - members.length - 2], context);
-                }
-                if (members.length + currentEvents.length + 2 == position) {
-                  return getColTitle("الفعاليات القادمة", context);
-                }
-                if (position <
-                    members.length +
-                        currentEvents.length +
-                        3 +
-                        comingEvents.length) {
-                  return getColEvent(
-                      comingEvents[
-                          position - members.length - 3 - currentEvents.length],
-                      context);
-                }
-                if (position ==
-                    members.length +
-                        currentEvents.length +
-                        3 +
-                        comingEvents.length) {
-                  return getColTitle("الفعاليات السابقة", context);
-                }
+              if (position <= members.length)
+                return getColMember(position, context);
+              if (position == members.length + 1)
+                return getColTitle("الفعاليات الحالية", context);
+              if (position <= members.length + currentEvents.length + 1) {
                 return getColEvent(
-                    prevEvents[position -
-                        (members.length +
-                            currentEvents.length +
-                            4 +
-                            comingEvents.length)],
+                    currentEvents[position - members.length - 2], context);
+              }
+              if (members.length + currentEvents.length + 2 == position) {
+                return getColTitle("الفعاليات القادمة", context);
+              }
+              if (position <
+                  members.length +
+                      currentEvents.length +
+                      3 +
+                      comingEvents.length) {
+                return getColEvent(
+                    comingEvents[
+                        position - members.length - 3 - currentEvents.length],
                     context);
-              }),
+              }
+              if (position ==
+                  members.length +
+                      currentEvents.length +
+                      3 +
+                      comingEvents.length) {
+                return getColTitle("الفعاليات السابقة", context);
+              }
+              return getColEvent(
+                  prevEvents[position -
+                      (members.length +
+                          currentEvents.length +
+                          4 +
+                          comingEvents.length)],
+                  context);
+            }),
 
-        ),
       ),
     );
   }
