@@ -27,7 +27,8 @@ class Group {
               "2019/1/1",
               [1, 1, 1],
               EventType.inProgress, 0.3),
-          Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.Finished,0.88)
+          Event("هاكاثون فلتر",               "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي -لمدة ثلاث ايام من ٣١ يناير الى نهاية يوم السبت وبعد هذا يتوج الفريق الفائز وينعطى جائزة",
+               "2019/1/1", [1, 1, 1], EventType.Finished,0.88)
         ], [
           new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 3),
           new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)
@@ -41,7 +42,8 @@ class Group {
               "2019/1/2",
               [1, 1, 1],
               EventType.inProgress, 1.0),
-          Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress,0.88)
+          Event("هاكاثون فلتر",               "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي -لمدة ثلاث ايام من ٣١ يناير الى نهاية يوم السبت وبعد هذا يتوج الفريق الفائز وينعطى جائزة",
+              "2019/1/1", [1, 1, 1], EventType.inProgress,0.88)
         ], [
           new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 3),
           new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 50)
@@ -89,16 +91,13 @@ class Event {
 class EventReport {
   final Event event;
   final List<String> pictures;
-  String report;
   final String attendence;
+  final String guests;
+  final String timeDays;
+  final String timeHours;
+  final String organazires;
+  EventReport(this.event,this.pictures,this.attendence, this.guests, this.timeDays, this.timeHours, this.organazires);
 
-  EventReport(this.event,this.pictures,report,this.attendence)
-  {
-    if(report.toString().length == 0)
-      report = "لم يسلم بعد";
-    else
-      this.report = report;
-  }
 
 }
 enum EventType { ComingSoon, Finished, inProgress }

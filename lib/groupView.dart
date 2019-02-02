@@ -36,49 +36,27 @@ class GroupView extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: ListView.builder(
-
             itemCount: 4 + members.length + events.length,
             padding: const EdgeInsets.all(15.0),
             itemBuilder: (context, position) {
               if (position == 0) return getColTitle("أعضاء الفريق", context);
 
-              if (position <= members.length)
-                return getColMember(position, context);
-              if (position == members.length + 1)
-                return getColTitle("الفعاليات الحالية", context);
+              if (position <= members.length) return getColMember(position, context);
+              if (position == members.length + 1) return getColTitle("الفعاليات الحالية", context);
               if (position <= members.length + currentEvents.length + 1) {
-                return getColEvent(
-                    currentEvents[position - members.length - 2], context);
+                return getColEvent(currentEvents[position - members.length - 2], context);
               }
               if (members.length + currentEvents.length + 2 == position) {
                 return getColTitle("الفعاليات القادمة", context);
               }
-              if (position <
-                  members.length +
-                      currentEvents.length +
-                      3 +
-                      comingEvents.length) {
-                return getColEvent(
-                    comingEvents[
-                        position - members.length - 3 - currentEvents.length],
-                    context);
+              if (position < members.length + currentEvents.length + 3 + comingEvents.length) {
+                return getColEvent(comingEvents[position - members.length - 3 - currentEvents.length], context);
               }
-              if (position ==
-                  members.length +
-                      currentEvents.length +
-                      3 +
-                      comingEvents.length) {
+              if (position == members.length + currentEvents.length + 3 + comingEvents.length) {
                 return getColTitle("الفعاليات السابقة", context);
               }
-              return getColEvent(
-                  prevEvents[position -
-                      (members.length +
-                          currentEvents.length +
-                          4 +
-                          comingEvents.length)],
-                  context);
+              return getColEvent(prevEvents[position - (members.length + currentEvents.length + 4 + comingEvents.length)], context);
             }),
-
       ),
     );
   }
@@ -97,8 +75,7 @@ class GroupView extends StatelessWidget {
                   ),
                   leading: Container(
                     child: CircleAvatar(
-                      backgroundImage:
-                          NetworkImage('${members[position - 1].url}'),
+                      backgroundImage: NetworkImage('${members[position - 1].url}'),
                       radius: 25.0,
                     ),
                   ),
@@ -127,7 +104,7 @@ class GroupView extends StatelessWidget {
 
   Column getColEvent(Event e, BuildContext context) {
     return new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Center(
           child: Card(
@@ -137,19 +114,18 @@ class GroupView extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   title: Text(e.name),
-                  subtitle: getProgressBar(e.percentage,context),
+                  subtitle: getProgressBar(e.percentage, context),
                   onTap: () => _onTapItem(context, e),
                 ),
               ],
             ),
           ),
         ),
-
       ],
     );
   }
 
-  getProgressBar(double percentage,BuildContext context) {
+  getProgressBar(double percentage, BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: Container(
@@ -161,7 +137,7 @@ class GroupView extends StatelessWidget {
           lineHeight: 20.0,
           percent: percentage,
           center: Text(
-            (percentage*100).toString()+"%",
+            (percentage * 100).toString() + "%",
             style: new TextStyle(fontSize: 12.0),
           ),
 //        trailing: Icon(Icons),
@@ -186,9 +162,19 @@ class GroupView extends StatelessWidget {
   }
 
   void _onTapItem(BuildContext context, Event e) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => eventDetails(event: e)),
-    );
+    if (e.eventType == EventType.Finished)
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ReportView
+          (new EventReport(e, ["https://www.ftcksu.com/v1/users/getUserImage/50",
+        "https://www.ftcksu.com/v1/users/getUserImage/64",
+        "https://www.ftcksu.com/v1/users/getUserImage/62"], "35 نفر و 7 نفرات","دزاياسبيستبيستمسن","5 أيام","25 ساعة","عبادة عرابي، نواف القعيد"))),
+
+      );
+    else
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => eventDetails(event: e)),
+      );
   }
 }
