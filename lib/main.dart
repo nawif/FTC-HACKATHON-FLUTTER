@@ -22,8 +22,8 @@ class _ListViewState extends State<ListViewApp> {
     setState(() {
       items.add(Group.getDumbData(1));
       items.add(Group.getDumbData(2));
-      items.add(Group.getDumbData(3));
-      items.add(Group.getDumbData(4));
+//      items.add(Group.getDumbData(3));
+//      items.add(Group.getDumbData(4));
     });
 
   }

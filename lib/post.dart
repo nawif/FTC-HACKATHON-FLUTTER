@@ -18,18 +18,36 @@ class Group {
   }
 
   static Group getDumbData(int id) {
-    return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [
-      Event(
-          "هاكاثون فلتر",
-          "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي -لمدة ثلاث ايام من ٣١ يناير الى نهاية يوم السبت وبعد هذا يتوج الفريق الفائز وينعطى جائزة",
-          "2019/1/1",
-          [1, 1, 1],
-          EventType.inProgress, 0.3),
-      Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress,0.88)
-    ], [
-      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 1),
-      new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)
-    ]);
+    switch(id){
+      case 1:{
+        return new Group(id, 3, "مجموعة عبادة الأسطورة", "هذي مجموعة عبادة", [
+          Event(
+              "هاكاثون فلتر",
+              "هاكثون تطوير التطبيقات باستخدام Flutter خاص لاعضاء النادي -لمدة ثلاث ايام من ٣١ يناير الى نهاية يوم السبت وبعد هذا يتوج الفريق الفائز وينعطى جائزة",
+              "2019/1/1",
+              [1, 1, 1],
+              EventType.inProgress, 0.3),
+          Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.Finished,0.88)
+        ], [
+          new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 3),
+          new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 62)
+        ]);
+      }
+      case 2:{
+        return new Group(id, 3, "مجموعة نواف الأسطورة", "هذي مجموعة نواف", [
+          Event(
+              "محاضرة الأمن السيبراني",
+              "ينظّم نادي تقنية المستقبل محاضرة شيّقة بعنوان الأمن السيبراني مع د. محمد المشيقح. بالمحاور التالية: ١. الأمن السيبراني ضرورة للعالم الرقمي. ٢. الأمن السيبراني وأمن المعلومات ٣. كيف أحمي نفسي ومنظمتي؟ ٤. كيف أتخصص وأطور نفسي في هذا المجال؟",
+              "2019/1/2",
+              [1, 1, 1],
+              EventType.inProgress, 1.0),
+          Event("هاكاثون فلتر", "body", "2019/1/1", [1, 1, 1], EventType.inProgress,0.88)
+        ], [
+          new Member('https://www.ftcksu.com/v1/users/getUserImage/${id}', "نواف", 3),
+          new Member('https://www.ftcksu.com/v1/users/getUserImage/${id+1}', "عبادة", 50)
+        ]);
+      }
+    }
   }
 }
 
