@@ -100,7 +100,7 @@ class _ListViewState extends State<ListViewApp> {
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.group), title: Text('المجموعات')),
 						BottomNavigationBarItem(icon: Icon(Icons.monetization_on), title: Text('الميزانية')),
-						BottomNavigationBarItem(icon: Icon(Icons.monetization_on), title: Text('الجودة')),
+						BottomNavigationBarItem(icon: Icon(Icons.thumb_up), title: Text('الجودة')),
 
 					],
           currentIndex: _selectedIndex,

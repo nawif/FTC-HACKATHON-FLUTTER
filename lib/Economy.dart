@@ -86,7 +86,7 @@ class EconomyDetailsState extends State<EconomyDetails> {
                             )),
                   ),
                 ),
-								
+
               ],
             ),
           ),
@@ -99,9 +99,12 @@ class EconomyDetailsState extends State<EconomyDetails> {
     double percentage = amount / max;
     return Padding(
       padding: const EdgeInsets.all(8.0),
+
       child: Column(
         children: <Widget>[
           new CircularPercentIndicator(
+						animation: true,
+            animationDuration: 2000,
             radius: MediaQuery.of(context).size.width * size,
             percent: percentage,
             center: innerWidget == null

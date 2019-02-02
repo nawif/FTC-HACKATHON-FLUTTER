@@ -12,6 +12,7 @@ class JawadahView extends StatefulWidget {
 }
 
 class JawadahViewState extends State<JawadahView> {
+
   JawadahViewState(this.events, {Key key});
 
   final List<Event> events;
@@ -35,43 +36,41 @@ class JawadahViewState extends State<JawadahView> {
                     style: Theme.of(context).textTheme.title,
                   ),
                 ),
-                new Card(
-                  child: new Column(
-                    children: new List.generate(
-                        events.length,
-                        (index) => events[index].eventType == EventType.waitingApproval
-                            ? new GestureDetector(
-                                onTap: () => _onTap(context, index),
-                                child: new Card(
-                                  child: ListTile(
-                                    trailing: Column(
-                                      children: <Widget>[
-                                        Text(events[index].date),
-                                        new RaisedButton(
-                                          child: const Text('اقبل'),
-                                          color: Theme.of(context).accentColor,
-                                          elevation: 4.0,
-                                          splashColor: Colors.blueGrey,
-                                          onPressed: () {},
-                                        ),
-                                        new RaisedButton(
-                                          child: const Text('ارفض'),
-                                          color: Colors.red,
-                                          elevation: 4.0,
-                                          splashColor: Colors.blueGrey,
-                                          onPressed: () {},
-                                        ),
-                                      ],
-                                    ),
-                                    title: Text(
-                                      events[index].name,
-                                    ),
-                                    subtitle: Text(events[index].body),
+                new Column(
+                  children: new List.generate(
+                      events.length,
+                      (index) => events[index].eventType == EventType.waitingApproval
+                          ? new GestureDetector(
+                              onTap: () => _onTap(context, index),
+                              child: new Card(
+                                child: ListTile(
+                                  trailing: Column(
+                                    children: <Widget>[
+                                      Text(events[index].date),
+                                      new RaisedButton(
+                                        child: const Text('اقبل'),
+                                        color: Theme.of(context).accentColor,
+                                        elevation: 4.0,
+                                        splashColor: Colors.blueGrey,
+                                        onPressed: () {},
+                                      ),
+                                      new RaisedButton(
+                                        child: const Text('ارفض'),
+                                        color: Colors.red,
+                                        elevation: 4.0,
+                                        splashColor: Colors.blueGrey,
+                                        onPressed: () {},
+                                      ),
+                                    ],
                                   ),
+                                  title: Text(
+                                    events[index].name,
+                                  ),
+                                  subtitle: Text(events[index].body),
                                 ),
-                              )
-                            : Container()),
-                  ),
+                              ),
+                            )
+                          : Container()),
                 ),
                 new Text(
                   "المشاريع المرفوضة",
