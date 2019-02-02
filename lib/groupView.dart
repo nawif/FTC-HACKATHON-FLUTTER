@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'post.dart';
-import 'main.dart';
+import 'reportView.dart';
 import 'eventDetails.dart';
 
 class GroupView extends StatelessWidget {

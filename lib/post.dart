@@ -86,4 +86,19 @@ class Event {
   Event(this.name, this.body, this.date, this.checkedItems, this.eventType, this.percentage);
 }
 
+class EventReport {
+  final Event event;
+  final List<String> pictures;
+  String report;
+  final String attendence;
+
+  EventReport(this.event,this.pictures,report,this.attendence)
+  {
+    if(report.toString().length == 0)
+      report = "لم يسلم بعد";
+    else
+      this.report = report;
+  }
+
+}
 enum EventType { ComingSoon, Finished, inProgress }
