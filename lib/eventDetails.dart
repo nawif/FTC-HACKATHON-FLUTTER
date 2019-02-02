@@ -16,13 +16,13 @@ class eventDetailsState extends State<eventDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        new Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         title: Text(event.name),
       ),
-      body: Directionality(
-        textDirection: TextDirection.rtl,
+      body: SingleChildScrollView(
+        child: Directionality(
+          textDirection: TextDirection.rtl,
           child: Column(
             children: <Widget>[
               new IntrinsicHeight(
@@ -79,44 +79,55 @@ class eventDetailsState extends State<eventDetails> {
                   style: Theme.of(context).textTheme.body2,
                 ),
               ),
-//              getRegularWidgets(),
+              getRegularWidgets(0),
+              getRegularWidgets(1),
+              getRegularWidgets(2),
+              getRegularWidgets(3),
+              getRegularWidgets(4),
+              getRegularWidgets(5),
+              getRegularWidgets(6),
+              getRegularWidgets(7),
+              getRegularWidgets(8),
+              getRegularWidgets(9),
+              getRegularWidgets(10),
+              getRegularWidgets(11),
+
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(decoration: InputDecoration(labelText: 'علق')),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 60),
+                child: new RaisedButton(
+                  child: const Text('ارسل'),
+                  color: Theme.of(context).accentColor,
+                  elevation: 4.0,
+                  splashColor: Colors.blueGrey,
+                  onPressed: () {
+
+                  },
+                ),
+              ),
             ],
           ),
+        ),
       ),
     );
 //      },
 //    );
-
   }
-  Map<String, bool> valuesCars = {
-    'Car11': false,
-    'Car12': false,
-    'Car13': false,
-    'Car14': false,
-    'Car15': false,
-    'Car16': false,
-    'Car17': false,
-    'Car18': false,
-    'Car19': false,
-    'Car20': false,
-    'Car21': false,
-  };
-  List<Widget> getRegularWidgets() {
-    List<Widget> widgets = valuesCars.keys.map((key) {
-      return new CheckboxListTile(
-          title: new Text(key),
-          value: valuesCars[key],
-          onChanged: (bool value) {
-            setState(() {
-              valuesCars[key] = !valuesCars[key];
-            });
-          });
-    }).toList();
 
-    return widgets;
+  List<String> checkListTitle = ['التأكيد على الحجز مع 22|67', 'التواصل مع الضيف', 'الترتيب المسبق', 'التسويق بشكل مكثف', 'بانر وبوستر', 'التأكد من توفر التغذية', 'التواجد قبل الفعالية والتأكد من كل شيء', 'التنظيم خلال الفعالية', 'ترتيب المكان بعد الفعالية', 'احضار وارجاع المستلزمات من والى النادي', 'التأكد من توفر البث "قائد المجموعة"', 'جميع ما هو ضروري ولم يتم ذكره اعلاه'];
+  static List<bool> checkListState = [false, false, false, false, false, false, false, false, false, false, false, false];
+  CheckboxListTile getRegularWidgets(position) {
+    return  CheckboxListTile(
+        title: new Text(checkListTitle[position]),
+        value: checkListState[position],
+
+        onChanged: (bool value) {
+          setState(() {
+            checkListState[position] = !checkListState[position];
+          });
+        });
   }
 }
